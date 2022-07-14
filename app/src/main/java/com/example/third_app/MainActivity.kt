@@ -2,6 +2,8 @@ package com.example.third_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +43,12 @@ class MainActivity : AppCompatActivity() {
             }
             selectedItemId = R.id.main_home
         }
+
+    }
+    //item 버튼 메뉴 Toolbar에 집어 넣기
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar, menu)
+        return true
     }
 
 }
