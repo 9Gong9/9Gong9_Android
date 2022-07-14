@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:host="oauth"
-                    android:scheme="kakao0e5adec60ff5a89f23d916917c8eb7d1" />
+                    android:scheme="@string/kakao_manifest_key" />
             </intent-filter>
         </activity>
         <activity
