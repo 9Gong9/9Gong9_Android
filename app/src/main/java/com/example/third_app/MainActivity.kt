@@ -2,14 +2,18 @@ package com.example.third_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.kakao.sdk.common.util.Utility
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var keyHash = Utility.getKeyHash(this)
+        Log.e("hash", keyHash)
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bnv_main) as BottomNavigationView
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
