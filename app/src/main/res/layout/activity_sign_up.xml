@@ -15,13 +15,12 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="130dp">
 
-
         <EditText
 
-            android:id="@+id/et_email"
+            android:id="@+id/et_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email"
+            android:hint="id"
             android:layout_margin="10dp"/>
 
         <EditText
@@ -32,6 +31,12 @@
             android:layout_margin="10dp"
             android:inputType="textPassword"/>
 
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name"
+            android:layout_margin="10dp"/>
 
         <Button
             android:id="@+id/btn_join"

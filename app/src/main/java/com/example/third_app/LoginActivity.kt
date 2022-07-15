@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
             var password = binding.etPassword.text.toString().trim()
             loginService.requestLogin(id, password).enqueue(object: Callback<Login> {
                 override fun onFailure(call: Call<Login>, t: Throwable) {
-                    Log.e("Login", "error : 로그인 실패")
+                    Log.e("Login", "error : 로그인 호출 실패")
                     var dialog = AlertDialog.Builder(this@LoginActivity)
                     dialog.setTitle("Error")
                     dialog.setMessage("로그인 호출을 실패했습니다.")
