@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".FoodFullImage">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/foodMainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="아이시스 8.0 생수"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        ></TextView>
+    <TextView
+        android:id="@+id/foodPlace1"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="대전 > 유성구 > 어은로"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp">
+    </TextView>
+    <ImageView
+        android:id="@+id/foodFullImg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/water"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"></ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/heartSave"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/emptyheart"></ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="저장하기"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/foodCalendar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/plus"></ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="방 개설하기"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/foodCall"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/star"></ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="평점 남기기"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/foodSend"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:src="@drawable/upload"></ImageView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textSize="10dp"
+                android:gravity="center"
+                android:text="공유하기"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/Price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="13990원"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="#BF1717"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="예상 배송기간: "
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:id="@+id/deliverTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="2일"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" 소요"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="택배사: "
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:id="@+id/delivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="CJ대한통운"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/foodContext"
+        android:layout_width="match_parent"
+        android:layout_height="20.5dp"
+        android:layout_marginTop="5dp"
+
+        android:text="  열린 팀구매 참여하기"
+        android:background="@drawable/textview_box"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+       ></TextView>
+    <ListView
+        android:id="@+id/currentTeamList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="평점"
+            android:textStyle="bold"
+            android:textColor="@color/black"></TextView>
+        <TextView
+            android:id="@+id/foodPlace2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="4.8"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/round_button"
+        android:layout_marginBottom="30dp"
+        android:text="상품 더 보기"></androidx.appcompat.widget.AppCompatButton>
+
+</LinearLayout>
+
+</ScrollView>
