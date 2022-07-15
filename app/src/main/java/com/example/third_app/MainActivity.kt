@@ -8,6 +8,9 @@ import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kakao.sdk.common.util.Utility
 class MainActivity : AppCompatActivity() {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

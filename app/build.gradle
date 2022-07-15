@@ -34,6 +34,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    //dataBinding 에러 해결
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -48,7 +54,13 @@ dependencies {
     implementation "com.kakao.sdk:v2-user:2.11.0" // 카카오 로그인
     implementation "com.kakao.sdk:v2-talk:2.11.0" // 친구, 메시지(카카오톡)
     implementation "com.kakao.sdk:v2-share:2.11.0" // 메시지(카카오톡 공유)
+//    implementation 'com.android.support:design:26.1.0' //floatingActionBtn
+    implementation 'androidx.recyclerview:recyclerview:1.1.0' //recyclerview 추가
 
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+//    implementation 'com.github.bumptech.glide:glide:4.9.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
 
