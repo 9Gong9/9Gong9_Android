@@ -8,10 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.third_app.databinding.FragmentHomeBinding
 import java.io.Serializable
+
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.third_app.databinding.FragmentHomeBinding
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter:FoodRecyclerViewAdapter //adapter객체 먼저 선언해주기!
@@ -37,7 +44,6 @@ class HomeFragment : Fragment() {
 //        binding.foodRecyclerView.
         this.initializelist()
         initFoodRecyclerView()
-
         adapter.setItemClickListener(object:FoodRecyclerViewAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
                 //클릭 시 이벤트 작성
@@ -69,6 +75,32 @@ class HomeFragment : Fragment() {
 //
 //        })
 //        return inflater.inflate(R.layout.fragment_home, container, false)
+
+        // return inflater.inflate(R.layout.fragment_home, container, false)
+
+//        // 레트로핏 객체 생성
+//        var retrofit = Retrofit.Builder()
+//            .baseUrl("http://192.249.18.195:80")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        // ItemList 서비스 올리기
+//        var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
+//
+//        itemListService.requestItemList().enqueue(object: Callback<ItemList> {
+//            override fun onFailure(call: Call<ItemList>, t: Throwable) {
+//
+//            }
+//            override fun onResponse(call: Call<ItemList>, response: Response<ItemList>) {
+//                if (response.isSuccessful){
+//                    val body = response.body()
+//                    body?.let{
+//
+//                    }
+//                }
+//            }
+//        })
+
         return binding.root
     }
 
@@ -81,7 +113,7 @@ class HomeFragment : Fragment() {
 //        adapter=FoodRecyclerViewAdapter {position->onItemClick(position as Int)} //어댑터 객체 만듦
         adapter.datalist=mDatas //데이터 넣어줌
         binding.foodRecyclerView.adapter=adapter //리사이클러뷰에 어댑터 연결
-//        binding.foodRecyclerView.layoutManager= LinearLayoutManager(this.context) //레이아웃 매니저 연결
+        // binding.foodRecyclerView.layoutManager= LinearLayoutManager(this.context) //레이아웃 매니저 연결
         binding.foodRecyclerView.layoutManager= GridLayoutManager(this.context,2)
     }
 
@@ -97,7 +129,6 @@ class HomeFragment : Fragment() {
             add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","water8","20%","1680"))
         }
     }
-
     //clickListener func
 //    private fun onItemClick(position: Int) {
 //        Toast.makeText(this, mDatas[position], Toast.LENGTH_SHORT).show()
