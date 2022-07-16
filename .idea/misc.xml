@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/drawable/border.xml" value="0.2175" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/drawable/btn_blue.xml" value="0.2275" />
+        <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/drawable/btn_red.xml" value="0.178" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/drawable/round_button.xml" value="0.2285" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/drawable/textview_box.xml" value="0.2275" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_food_full_image.xml" value="0.2" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_group_adding_list.xml" value="0.264" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_group_making_page.xml" value="0.221875" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_login.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_logout.xml" value="0.10885416666666667" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/activity_sign_up.xml" value="0.19739583333333333" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/border.xml" value="0.22552083333333334" />
@@ -24,6 +26,7 @@
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/fullimage_group_list.xml" value="0.536" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/group_adding_list.xml" value="0.4" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/home_list.xml" value="0.4" />
+        <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/layout/product_list.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/menu/navi_menu.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/jina/AndroidStudioProjects/MadCamp_3rd/app/src/main/res/menu/toolbar.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/s1/AndroidStudioProjects/third_app2/app/src/main/res/layout/activity_main.xml" value="0.22146739130434784" />
