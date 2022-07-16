@@ -10,6 +10,9 @@ interface LoginService { //INPUT 서비스
     @PUT("/user") //어떤 형태로 데이터를 전송할 것인가
     fun requestLogin(
         @Field("id") id:String, //req
-        @Field("password") password:String
+        @Field("password") password:String?,
+        @Field("name") name:String,
+        @Field("isKakaoLogin") isKakaoLogin: Boolean
+
     ) : Call<Login> // 어떤 형태로 데이터를 받을 것인가 res
 }

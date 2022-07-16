@@ -8,13 +8,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.third_app.databinding.FragmentUserBinding
 import com.kakao.sdk.talk.TalkApiClient
+import java.util.Collections.list
 
 class UserFragment : Fragment() {
     private var mBinding : FragmentUserBinding ?= null
     private val binding get() = mBinding!!
+    private lateinit var adapter : ItemListAdapter
+
+    // product List
+    val mDatas=mutableListOf<Product>()
 
     // Context를 액티비티로 형변환해서 할당
     lateinit var mainActivity: MainActivity
@@ -37,6 +44,12 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mBinding= FragmentUserBinding.inflate(inflater, container, false)
+
+        //리스트 초기화
+        this.initializelist()
+        //리사이클러뷰 바인딩
+        initItemListRecyclerView()
+
         var userName = binding.tvUserName
         var profileImg = binding.ivUser
         // 카카오톡 프로필 가져오기
@@ -61,6 +74,18 @@ class UserFragment : Fragment() {
         }
 
         return binding.root
+    }
+    
+    private fun initItemListRecyclerView(){
+        adapter = ItemListAdapter()
+        adapter.datalist = mDatas
+        binding.ItemListRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
+        binding.ItemListRecyclerView.layoutManager = LinearLayoutManager(this.context)
+    }
+    private fun initializelist() {
+        with(mDatas){
+            add(Product("https://images.app.goo.gl/gfmppXq2iba9DK5v8","", 10,"","","","",10000,"0",8000,"",""))
+        }
     }
 
     companion object {
