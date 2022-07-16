@@ -22,8 +22,7 @@ class HomeFragment : Fragment() {
     val mDatas=mutableListOf<FoodData>()
     val userId="1"
     val userName="jina"
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
