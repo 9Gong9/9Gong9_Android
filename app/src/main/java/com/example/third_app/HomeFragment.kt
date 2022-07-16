@@ -1,6 +1,5 @@
 package com.example.third_app
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,9 +12,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.third_app.databinding.FragmentHomeBinding
 import java.io.Serializable
-
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.third_app.databinding.FragmentHomeBinding
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
