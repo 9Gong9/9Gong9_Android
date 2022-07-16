@@ -1,6 +1,6 @@
 package com.example.third_app
 
-data class Data(
+data class LoginData(
     val id: String,
     val isActive: Boolean,
     val name: String,

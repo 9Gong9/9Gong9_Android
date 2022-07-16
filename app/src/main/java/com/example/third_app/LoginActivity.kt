@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
     var login:Login? = null
     private var mBinding: ActivityLoginBinding ?= null
     private val binding get() = mBinding!!
+    private val sharedManager : SharedManager by lazy { SharedManager(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityLoginBinding.inflate(layoutInflater)
@@ -68,8 +69,17 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("Login:", "statusCode : "+login?.statusCode.toString())
                     Log.d("Login:", "Msg : "+login?.statusMsg.toString())
 
-                    Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
+                    //Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
                     if(login?.statusCode.toString()=="201"){
+                        var loginData = login!!.data
+                        // 현재 유저 정보 저장
+                        val currentUser = LoginData(
+                            id = loginData.id,
+                            isActive = loginData.isActive,
+                            name = loginData.name,
+                            password = loginData.password
+                        )
+                        sharedManager.saveCurrentUser(currentUser)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                         finish()

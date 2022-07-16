@@ -16,7 +16,6 @@
         android:layout_marginTop="130dp">
 
         <EditText
-
             android:id="@+id/et_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

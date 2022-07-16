@@ -56,14 +56,13 @@ dependencies {
     implementation "com.kakao.sdk:v2-share:2.11.0" // 메시지(카카오톡 공유)
 //    implementation 'com.android.support:design:26.1.0' //floatingActionBtn
     implementation 'androidx.recyclerview:recyclerview:1.1.0' //recyclerview 추가
-
     //glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
-//    implementation 'com.github.bumptech.glide:glide:4.9.0'
-//    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
-
+    //sharedPrefernces
+    implementation 'androidx.preference:preference-ktx:1.1.1'
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
