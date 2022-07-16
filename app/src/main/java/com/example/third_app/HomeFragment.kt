@@ -19,11 +19,10 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: FoodRecyclerViewAdapter //adapter객체 먼저 선언해주기!
 
-    val mDatas = mutableListOf<FoodData>()
-    val userId = "1"
-    val userName = "jina"
-
-
+    val mDatas=mutableListOf<FoodData>()
+    val userId="1"
+    val userName="jina"
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
