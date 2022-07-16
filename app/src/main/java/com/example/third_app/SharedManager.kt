@@ -21,4 +21,10 @@ class SharedManager(context:Context) {
             password = prefs["password", ""],
         )
     }
+    fun logoutCurrentUser(user:LoginData){
+        prefs["id"]=null
+        prefs["isActive"]=null
+        prefs["name"]=null
+        prefs["password"]=null
+    }
 }
