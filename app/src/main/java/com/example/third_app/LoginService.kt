@@ -15,4 +15,6 @@ interface LoginService { //INPUT 서비스
         @Field("isKakaoLogin") isKakaoLogin: Boolean
 
     ) : Call<Login> // 어떤 형태로 데이터를 받을 것인가 res
+
+
 }
