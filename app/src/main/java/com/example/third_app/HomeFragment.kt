@@ -1,21 +1,25 @@
 package com.example.third_app
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.databinding.DataBindingUtil.setContentView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.third_app.databinding.FragmentHomeBinding
-
+import java.io.Serializable
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter:FoodRecyclerViewAdapter //adapter객체 먼저 선언해주기!
 
     val mDatas=mutableListOf<FoodData>()
+    val userId="1"
+    val userName="jina"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +34,40 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding=FragmentHomeBinding.inflate(inflater, container, false)
         setContentView(binding.root)
+//        binding.foodRecyclerView.
         this.initializelist()
         initFoodRecyclerView()
+
+        adapter.setItemClickListener(object:FoodRecyclerViewAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                //클릭 시 이벤트 작성
+                Toast.makeText(context,"${mDatas[position].food_name}\n${mDatas[position].food_price}원입니다.",
+                Toast.LENGTH_SHORT).show()
+                val intent= Intent(context, FoodFullImage::class.java)
+                intent.putExtra("userId", userId)
+                intent.putExtra("userName", userName)
+                //intent.putExtra("foodData",mDatas!![position])
+                startActivity(intent)
+//                dataPassListener.onUserIDPass(userId)
+//                dataPassListener.onUserNamePass(userName)
+//                dataPassListener.OnDataPass(mDatas[position])
+
+            }
+        })
+        mDatas.add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","newnew1","20%","1680"))
+        mDatas.add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","newnew2","20%","1680"))
+        mDatas.add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","newnew3","20%","1680"))
+        mDatas.add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","newnew4","20%","1680"))
+
+//        adapter.setOnItemClickListener(object : FoodRecyclerViewAdapter.OnItemClickListener{
+//            override fun onItemClick(v: View, data: FoodData, pos : Int) {
+//                Intent(this@HomeFragment, FoodFullImage::class.java).apply {
+//                    putExtra("data", data)
+//                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                }.run { startActivity(this) }
+//            }
+//
+//        })
 //        return inflater.inflate(R.layout.fragment_home, container, false)
         return binding.root
     }
@@ -40,7 +76,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun initFoodRecyclerView() {
-        val adapter=FoodRecyclerViewAdapter() //어댑터 객체 만듦
+//        val adapter=FoodRecyclerViewAdapter() //어댑터 객체 만듦
+        adapter=FoodRecyclerViewAdapter() //어댑터 객체 만듦
+//        adapter=FoodRecyclerViewAdapter {position->onItemClick(position as Int)} //어댑터 객체 만듦
         adapter.datalist=mDatas //데이터 넣어줌
         binding.foodRecyclerView.adapter=adapter //리사이클러뷰에 어댑터 연결
 //        binding.foodRecyclerView.layoutManager= LinearLayoutManager(this.context) //레이아웃 매니저 연결
@@ -59,6 +97,11 @@ class HomeFragment : Fragment() {
             add(FoodData("https://images.app.goo.gl/gfmppXq2iba9DK5v8","water8","20%","1680"))
         }
     }
+
+    //clickListener func
+//    private fun onItemClick(position: Int) {
+//        Toast.makeText(this, mDatas[position], Toast.LENGTH_SHORT).show()
+//    }
 
     companion object {
         /**
@@ -79,4 +122,16 @@ class HomeFragment : Fragment() {
                 }
             }
     }
+
+    //interface 생성
+//    interface OnDataPassListener{
+//        fun onUserIDPass(data: String?)
+//        fun onUserNamePass(data:String?)
+//        fun OnDataPass(data: FoodData)
+//    }
+//    lateinit var dataPassListener: OnDataPassListener
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        dataPassListener=context as OnDataPassListener
+//    }
 }
