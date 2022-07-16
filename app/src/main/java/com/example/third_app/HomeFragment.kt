@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.third_app.databinding.FragmentHomeBinding
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -32,7 +32,32 @@ class HomeFragment : Fragment() {
         setContentView(binding.root)
         this.initializelist()
         initFoodRecyclerView()
-//        return inflater.inflate(R.layout.fragment_home, container, false)
+        // return inflater.inflate(R.layout.fragment_home, container, false)
+
+//        // 레트로핏 객체 생성
+//        var retrofit = Retrofit.Builder()
+//            .baseUrl("http://192.249.18.195:80")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        // ItemList 서비스 올리기
+//        var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
+//
+//        itemListService.requestItemList().enqueue(object: Callback<ItemList> {
+//            override fun onFailure(call: Call<ItemList>, t: Throwable) {
+//
+//            }
+//            override fun onResponse(call: Call<ItemList>, response: Response<ItemList>) {
+//                if (response.isSuccessful){
+//                    val body = response.body()
+//                    body?.let{
+//
+//                    }
+//                }
+//            }
+//        })
+
+
         return binding.root
     }
 
@@ -40,10 +65,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun initFoodRecyclerView() {
-        val adapter=FoodRecyclerViewAdapter() //어댑터 객체 만듦
+        adapter=FoodRecyclerViewAdapter() //어댑터 객체 만듦
         adapter.datalist=mDatas //데이터 넣어줌
         binding.foodRecyclerView.adapter=adapter //리사이클러뷰에 어댑터 연결
-//        binding.foodRecyclerView.layoutManager= LinearLayoutManager(this.context) //레이아웃 매니저 연결
+        // binding.foodRecyclerView.layoutManager= LinearLayoutManager(this.context) //레이아웃 매니저 연결
         binding.foodRecyclerView.layoutManager= GridLayoutManager(this.context,2)
     }
 
@@ -60,23 +85,4 @@ class HomeFragment : Fragment() {
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
