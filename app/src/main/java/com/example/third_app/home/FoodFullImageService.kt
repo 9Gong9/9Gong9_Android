@@ -4,11 +4,13 @@ import com.example.third_app.user.PreviousItemList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface FoodFullImageService {
     //@FormUrlEncoded //인코딩 옵션
-    @GET("/item/item/{itemid}") //어떤 형태로 데이터를 전송할 것인가
+    @GET("/item/{itemid}") //어떤 형태로 데이터를 전송할 것인가
     fun requestItemList(
-        @Path("itemid", encoded=true) id:String
+        @Path("itemid", encoded=true) id:String,
+        @Query("userid") userid : String
     ) : Call<ItemFullImage> // 어떤 형태로 데이터를 받을 것인가 res
 }

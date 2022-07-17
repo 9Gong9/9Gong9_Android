@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,9 +21,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter : FoodRecyclerViewAdapter //adapter객체 먼저 선언해주기!
+//    lateinit var viewModel : ItemViewModel by activityViewModels()
 
     var mDatas=mutableListOf<Product>()
     var itemList: ItemList?=null
+
+    // sharedManager 선언
+    private val sharedManager : SharedManager by lazy { SharedManager(mainActivity) }
 
     // Context를 액티비티로 형변환해서 할당
     lateinit var mainActivity: MainActivity
@@ -50,9 +55,11 @@ class HomeFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        var userid = sharedManager.getCurrentUser().id
+
         //itemListService
         var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
-        itemListService.requestItemList("대전광역시/유성구/신성동").enqueue(object :Callback<ItemList>{
+        itemListService.requestItemList("대전광역시/유성구/신성동", userid).enqueue(object :Callback<ItemList>{
             override fun onFailure(call: Call<ItemList>, t: Throwable) {
                 Log.e("ItemList","error : itemList 호출 실패")
                 adapter = FoodRecyclerViewAdapter()
@@ -80,9 +87,20 @@ class HomeFragment : Fragment() {
                             context, "${mDatas[position].id} 클릭 이벤트.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val intent = Intent(context, FoodFullImage::class.java)
-                        intent.putExtra("itemId", mDatas[position].id)
+                        // 전역변수 itemId
+
+                        //setFragmentResult()
+                        val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
+                            putExtra("itemId", mDatas[position].id.toString())
+                        }
+                        ItemApplication.setItemId(mDatas[position].id.toString())
+//                        viewModel.itemId = mDatas[position].id.toString()
                         startActivity(intent)
+//                        val intent = Intent(context, FoodFullImage::class.java).apply{
+//                            putExtra("itemId", mDatas[position].id.toString())
+//                        }
+//                        setResult(RESULT_OK,intent)
+                        Log.e("Home", mDatas[position].id.toString())
                     }
                 })
             }

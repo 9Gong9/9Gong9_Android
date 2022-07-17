@@ -26,7 +26,7 @@
             android:name=".home.GroupAddingList"
             android:exported="false" />
         <activity
-            android:name=".home.FoodFullImage"
+            android:name=".home.FoodFullImageActivity"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

@@ -15,5 +15,7 @@ data class Product(
     val rate: String,
     val salePrice: Int,
     val state: String,
-    val town: String
+    val town: String,
+    val userJoinedIt: Boolean,
+    val userLikedIt: Boolean
 )

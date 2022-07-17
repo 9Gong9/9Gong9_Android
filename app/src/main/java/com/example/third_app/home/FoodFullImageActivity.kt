@@ -3,21 +3,15 @@ package com.example.third_app.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.third_app.R
 import com.example.third_app.databinding.ActivityFoodFullImageBinding
-import com.example.third_app.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class FoodFullImage : AppCompatActivity(){
+class FoodFullImageActivity : AppCompatActivity(){
 //    var userId=null
 //    var userName=null
 //    var foodData=null
@@ -28,7 +22,7 @@ class FoodFullImage : AppCompatActivity(){
         binding = ActivityFoodFullImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val itemId = intent.getStringExtra("userId")
+        val itemId = ItemApplication.getItemId()
         var data : ItemFullImage ?= null
         var item : Product ?= null
 
@@ -38,10 +32,15 @@ class FoodFullImage : AppCompatActivity(){
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        if(itemId!=null){
+            Log.e("FoodFullImage", itemId)
+        }
+
+        var userid = UserApplication.getUserId()
         //itemListService
         var foodFullImageService: FoodFullImageService = retrofit.create(FoodFullImageService::class.java)
         if (itemId != null) {
-            foodFullImageService.requestItemList(itemId).enqueue(object : Callback<ItemFullImage> {
+            foodFullImageService.requestItemList(itemId, userid!!).enqueue(object : Callback<ItemFullImage> {
                 override fun onFailure(call: Call<ItemFullImage>, t: Throwable) {
                     Log.e("FullImage","error : itemList 호출 실패")
                 }
@@ -52,8 +51,11 @@ class FoodFullImage : AppCompatActivity(){
                     if(data!=null){
                         item = data?.data
                         binding.foodMainTitle.text = item?.name
-                        Glide.with(binding.foodFullImg)
-                            .load(item?.imgUrl)
+                        binding.foodMainPrice.text = item?.salePrice.toString()
+                        binding.foodMainDeliverTime.text = item?.dueDate
+                        binding.foodMainRate.text = item?.rate
+                        Glide.with(this@FoodFullImageActivity)
+                            .load("http:"+item?.imgUrl.toString())
                             .into(binding.foodFullImg)
                     }
     //                val intent = Intent(context, FoodFullImage::class.java)
