@@ -3,10 +3,7 @@ package com.example.third_app.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.bumptech.glide.Glide
-import com.example.third_app.MainActivity
-import com.example.third_app.SharedManager
 import com.example.third_app.databinding.ActivityFoodFullImageBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -54,8 +51,11 @@ class FoodFullImageActivity : AppCompatActivity(){
                     if(data!=null){
                         item = data?.data
                         binding.foodMainTitle.text = item?.name
-                        Glide.with(binding.foodFullImg)
-                            .load(item?.imgUrl)
+                        binding.foodMainPrice.text = item?.salePrice.toString()
+                        binding.foodMainDeliverTime.text = item?.dueDate
+                        binding.foodMainRate.text = item?.rate
+                        Glide.with(this@FoodFullImageActivity)
+                            .load("http:"+item?.imgUrl.toString())
                             .into(binding.foodFullImg)
                     }
     //                val intent = Intent(context, FoodFullImage::class.java)

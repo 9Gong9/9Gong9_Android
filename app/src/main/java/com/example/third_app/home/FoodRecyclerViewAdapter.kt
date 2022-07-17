@@ -19,12 +19,12 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
         fun bind(foodData: Product){
             //binding.dogPhotoImg.=dogData.dog_img
 
-            val imageUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            //val imageUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
             val imageView = binding.homeFoodImg
 //            val url = "https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg"
 
             Glide.with(this.itemView)
-                .load(imageUrl) // 불러올 이미지 url
+                .load("http:"+foodData.imgUrl) // 불러올 이미지 url
                 .into(imageView) // 이미지를 넣을 뷰
 
 //                .circleCrop() // 동그랗게 자르기
