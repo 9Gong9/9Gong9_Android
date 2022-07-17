@@ -64,6 +64,10 @@ class FoodFullImageActivity : AppCompatActivity(){
                         Glide.with(this@FoodFullImageActivity)
                             .load("http:"+item?.imgUrl.toString())
                             .into(binding.foodFullImg)
+                        //userLikedIt 받기
+                        checkHeart= (item?.userLikedIt == true)
+                        if(checkHeart)binding.heartSave.setImageResource(R.drawable.redheart)
+                        else binding.heartSave.setImageResource(R.drawable.emptyheart)
                     }
     //                val intent = Intent(context, FoodFullImage::class.java)
     //                intent.putExtra("userId", mDatas[position].id)
@@ -109,7 +113,8 @@ class FoodFullImageActivity : AppCompatActivity(){
             var likedFoodFullImageService: LikedFoodFullImageService =retrofit.create(LikedFoodFullImageService::class.java)
 
             var dialog=AlertDialog.Builder(this) //FoodFullImageActivity로 하면 에러 나는 이유..?
-            dialog.setTitle("관심 목록에 추가하시겠습니까?")
+//            dialog.setTitle("관심 목록에 추가하시겠습니까?")
+//            dialog.show()
 
             likedFoodFullImageService.requestUpdateHeartList(itemid, userid!!).enqueue(object :Callback<LikedItemFullImage>{
                 override fun onFailure(call: Call<LikedItemFullImage>, t: Throwable) {
@@ -136,7 +141,9 @@ class FoodFullImageActivity : AppCompatActivity(){
                         var likedProduct = likedItemFullImage!!.data
                         // 현재 유저 정보 저장
 
-                        dialog.setMessage("관심 목록 등록 완료!")
+                        if(checkHeart)dialog.setMessage("관심 목록 등록 완료!")
+                        else dialog.setMessage("관심 목록 등록 취소!")
+                        dialog.show()
                     }
                     else{
                         //Toast.makeText(this, "error : "+likedItemFullImage?.statusCode.toString(), Toast.LENGTH_SHORT)
