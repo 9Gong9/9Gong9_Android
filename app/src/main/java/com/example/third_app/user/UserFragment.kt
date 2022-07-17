@@ -124,8 +124,7 @@ class UserFragment : Fragment() {
                     //Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
                     if(logout?.statusCode.toString()=="204"){
                         var logoutData = logout!!.data
-                        // 현재 유저 정보 저장
-
+                        //userId null로 바꿔주기
                         sharedManager.logoutCurrentUser(currentUser)
                         UserApplication.deleteUserId()
                         Log.d(TAG,"UserFragment!!!!!!id"+sharedManager.getCurrentUser().id)
