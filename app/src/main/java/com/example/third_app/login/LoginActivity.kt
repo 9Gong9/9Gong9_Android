@@ -145,6 +145,7 @@ class LoginActivity : AppCompatActivity() {
                             password = loginData.password
                         )
                         sharedManager.saveCurrentUser(currentUser)
+                        UserApplication.setUserId(loginData.id)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                         finish()
