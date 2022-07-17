@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.third_app.home.FoodRecyclerViewAdapter
-import com.example.third_app.home.Product
 import com.example.third_app.databinding.ProductListBinding
+import com.example.third_app.home.Product
 
 class PreviousItemListAdapter() : RecyclerView.Adapter<PreviousItemListAdapter.MyViewHolder>() {
     var datalist = mutableListOf<Product>()

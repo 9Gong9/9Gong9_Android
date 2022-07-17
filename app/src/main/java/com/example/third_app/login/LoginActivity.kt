@@ -11,6 +11,7 @@ import com.example.third_app.MainActivity
 import com.example.third_app.SharedManager
 import com.example.third_app.SignUpActivity
 import com.example.third_app.databinding.ActivityLoginBinding
+import com.example.third_app.home.UserApplication
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -90,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                             password = loginData.password
                                         )
                                         sharedManager.saveCurrentUser(currentUser)
+                                        UserApplication.setUserId(loginData.id)
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                         startActivity(intent)
                                         finish()

@@ -3,20 +3,25 @@ package com.example.third_app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.third_app.category.CategoryFragment
 import com.example.third_app.home.HomeFragment
 import com.example.third_app.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kakao.sdk.common.util.Utility
 class MainActivity : AppCompatActivity() {
+//    //mainActivity ItemViewModel
+//    lateinit var viewModel : ItemViewModel
 
-
-
+    // 타 액티비티에서 맥락 호출
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        //viewModel 생성
+//       viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
 
-        var keyHash = Utility.getKeyHash(this)
+//        var keyHash = Utility.getKeyHash(this)
         //Log.e("hash", keyHash)
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bnv_main) as BottomNavigationView
@@ -60,3 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+////mainActivity ItemViewModel 정의
+//class ItemViewModel : ViewModel(){
+//    var itemId : String ?= null
+//}
