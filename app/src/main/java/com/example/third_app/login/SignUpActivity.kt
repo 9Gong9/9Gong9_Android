@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
-import com.example.third_app.databinding.ActivityLoginBinding
 import com.example.third_app.databinding.ActivitySignUpBinding
+import com.example.third_app.login.Login
+import com.example.third_app.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,7 +18,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 class SignUpActivity : AppCompatActivity() {
-    var res:Login? = null // SignUp POST할 경우 회신 데이터 양식
+    var res: Login? = null // SignUp POST할 경우 회신 데이터 양식
     private var mBinding: ActivitySignUpBinding?= null
     private val binding get() = mBinding!!
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,8 @@
-package com.example.third_app
+package com.example.third_app.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.third_app.R
 
 class GroupAddingClicked : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.example.third_app
+package com.example.third_app.login
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AlertDialog.Builder
+import com.example.third_app.MainActivity
+import com.example.third_app.SharedManager
+import com.example.third_app.SignUpActivity
 import com.example.third_app.databinding.ActivityLoginBinding
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
@@ -18,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class LoginActivity : AppCompatActivity() {
-    var login:Login? = null
+    var login: Login? = null
     private var mBinding: ActivityLoginBinding ?= null
     private val binding get() = mBinding!!
     private val sharedManager : SharedManager by lazy { SharedManager(this) }

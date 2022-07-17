@@ -1,27 +1,22 @@
-package com.example.third_app
+package com.example.third_app.home
 
-import android.content.Intent
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 import com.example.third_app.databinding.HomeListBinding
-import android.content.Context //context import 수동
 import android.view.View
 
 class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.MyViewHolder>() {
     //변수 하드코딩 바꿔야 함*******************************
     var userId="7"
 
-    var datalist = mutableListOf<FoodData>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
+    var datalist = mutableListOf<Product>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
 
     inner class MyViewHolder(private val binding: HomeListBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(foodData: FoodData){
+        fun bind(foodData: Product){
             //binding.dogPhotoImg.=dogData.dog_img
 
             val imageUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
@@ -33,10 +28,14 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
                 .into(imageView) // 이미지를 넣을 뷰
 
 //                .circleCrop() // 동그랗게 자르기
-            //binding.homeFoodImg.setImageURI(foodData.food_img.toString())
-            binding.homeFoodContext.text= foodData.food_name.toString()
-            binding.homeFoodPercent.text=foodData.food_percent.toString()
-            binding.homeFoodPrice.text=foodData.food_price.toString()
+//            //binding.homeFoodImg.setImageURI(foodData.food_img.toString())
+//            binding.homeFoodContext.text= foodData.food_name.toString()
+//            binding.homeFoodPercent.text=foodData.food_percent.toString()
+//            binding.homeFoodPrice.text=foodData.food_price.toString()
+
+            binding.homeFoodContext.text= foodData.name
+            binding.homeFoodPercent.text= foodData.rate
+            binding.homeFoodPrice.text= foodData.salePrice.toString()
 
 //            itemView.setOnClickListener {
 //                Intent(context, FoodFullImage::class.java).apply{
@@ -68,7 +67,7 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
 
     //recyclerview가 viewholder를 가져와 데이터 연결할때 호출
     //적절한 데이터를 가져와서 그 데이터를 사용하여 뷰홀더의 레이아웃 채움
-    override fun onBindViewHolder(holder: FoodRecyclerViewAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(datalist[position])
 
 //        //recyclerview clickListener

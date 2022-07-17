@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserFragment"
+    tools:context=".user.UserFragment"
     android:layout_marginTop="?attr/actionBarSize">
 
 
@@ -41,13 +41,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="99dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:layout_gravity="center"
+                />
 
             <android.widget.Button
                 android:id="@+id/logoutBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="185dp"
+                android:layout_weight="1"
                 android:background="@drawable/btn_red"
                 android:text="logout"
                 android:textColor="@color/white"
@@ -59,9 +66,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ItemListRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="400dp"/>
 
     </LinearLayout>
 
