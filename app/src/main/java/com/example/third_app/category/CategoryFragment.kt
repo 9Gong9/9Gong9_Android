@@ -1,10 +1,11 @@
-package com.example.third_app
+package com.example.third_app.category
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.third_app.R
 
 
 class CategoryFragment : Fragment() {

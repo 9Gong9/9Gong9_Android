@@ -1,4 +1,4 @@
-package com.example.third_app
+package com.example.third_app.user
 
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
@@ -13,7 +13,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.third_app.*
 import com.example.third_app.databinding.FragmentUserBinding
+import com.example.third_app.home.Product
+import com.example.third_app.login.Login
+import com.example.third_app.login.LoginActivity
+import com.example.third_app.login.LogoutService
 import com.kakao.sdk.talk.TalkApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,10 +29,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class UserFragment : Fragment() {
     private var mBinding : FragmentUserBinding ?= null
     private val binding get() = mBinding!!
-    private lateinit var adapter : ItemListAdapter
-    var logout:Login?=null
+    private lateinit var adapter : PreviousItemListAdapter
+    var logout: Login?=null
+    var previousitemList: PreviousItemList?=null
+
     // product List
-    val mDatas=mutableListOf<Product>()
+    var mDatas=mutableListOf<Product>()
     var alertDialog : androidx.appcompat.app.AlertDialog?= null
 
     // Context를 액티비티로 형변환해서 할당
@@ -52,13 +59,9 @@ class UserFragment : Fragment() {
     ): View? {
         mBinding= FragmentUserBinding.inflate(inflater, container, false)
 
-        //리스트 초기화
-        this.initializelist()
-        //리사이클러뷰 바인딩
-        initItemListRecyclerView()
-
         var userName = binding.tvUserName
         var profileImg = binding.ivUser
+
         // 카카오톡 프로필 가져오기
         TalkApiClient.instance.profile { profile, error ->
             if (error != null) {
@@ -94,7 +97,6 @@ class UserFragment : Fragment() {
 
         val currentUser=sharedManager.getCurrentUser()
         var logout_id=currentUser.id
-        Log.e("Logout", logout_id)
 
         //logout 버튼 클릭 시 logout 시키기_로컬에서 sharedManager null로 바꿔주기
         binding.logoutBtn.setOnClickListener {
@@ -134,33 +136,42 @@ class UserFragment : Fragment() {
                         dialog.setMessage("로그아웃 완료!")
                     }
                     else{
-//                                        dialog.setTitle("Error "+login?.statusCode.toString())
                         Toast.makeText(mainActivity, "error : "+logout?.statusCode.toString(), Toast.LENGTH_SHORT)
                                         dialog.setMessage(logout?.statusMsg.toString())
                                         dialog.show()
-                                        alertDialog?.dismiss()
                     }
                 }
             })
-//                        dialog.setPositiveButton("YES", dialogLister)
-//            dialog.setNegativeButton("NO", null)
-            dialog.show()
-
+            alertDialog?.dismiss()
         }
 
+
+
+        //User's Previous itemListService
+        var itemListService: PreviousItemListService = retrofit.create(PreviousItemListService::class.java)
+        itemListService.requestItemList(sharedManager.getCurrentUser().id).enqueue(object :Callback<PreviousItemList>{
+            override fun onFailure(call: Call<PreviousItemList>, t: Throwable) {
+                Log.e("ItemList","error : itemList 호출 실패")
+                adapter = PreviousItemListAdapter()
+                binding.ItemListRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
+                binding.ItemListRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
+            }
+
+            override fun onResponse(call: Call<PreviousItemList>, response: Response<PreviousItemList>) {
+                previousitemList=response.body()
+                Log.d("ItemList", previousitemList.toString())
+                Log.d("ItemList", "statusCode : "+previousitemList?.statusCode.toString())
+                Log.d("ItemList", "Msg : "+previousitemList?.statusMsg.toString())
+                adapter = PreviousItemListAdapter()
+                mDatas = previousitemList?.data as MutableList<Product>
+                adapter.datalist = mDatas
+                binding.ItemListRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
+                binding.ItemListRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
+                adapter.notifyDataSetChanged()
+            }
+
+        })
         return binding.root
-    }
-    
-    private fun initItemListRecyclerView(){
-        adapter = ItemListAdapter()
-        adapter.datalist = mDatas
-        binding.ItemListRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
-        binding.ItemListRecyclerView.layoutManager = LinearLayoutManager(this.context)
-    }
-    private fun initializelist() {
-        with(mDatas){
-            add(Product("https://images.app.goo.gl/gfmppXq2iba9DK5v8","", 10,"","","","",10000,"0",8000,"",""))
-        }
     }
 
     companion object {

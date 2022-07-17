@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.third_app.PreferenceHelper.set
 import com.example.third_app.PreferenceHelper.get
+import com.example.third_app.login.LoginData
 
 class SharedManager(context:Context) {
     private val prefs:SharedPreferences = PreferenceHelper.defaultPrefs(context)
@@ -13,7 +14,7 @@ class SharedManager(context:Context) {
         prefs["name"] = user.name
         prefs["password"] = user.password
     }
-    fun getCurrentUser() : LoginData{
+    fun getCurrentUser() : LoginData {
         return LoginData(
             id = prefs["id", ""],
             isActive = prefs["isActive", false],
@@ -21,7 +22,7 @@ class SharedManager(context:Context) {
             password = prefs["password", ""],
         )
     }
-    fun logoutCurrentUser(user:LoginData){
+    fun logoutCurrentUser(user: LoginData){
         prefs["id"]=null
         prefs["isActive"]=null
         prefs["name"]=null

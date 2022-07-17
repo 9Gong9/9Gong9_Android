@@ -1,9 +1,6 @@
-package com.example.third_app
+package com.example.third_app.login
 
 import retrofit2.Call
-import org.json.JSONObject
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
 import retrofit2.http.PUT
 import retrofit2.http.Path
 

@@ -1,4 +1,4 @@
-package com.example.third_app
+package com.example.third_app.login
 
 data class LoginData(
     val id: String,

@@ -1,4 +1,4 @@
-package com.example.third_app
+package com.example.third_app.home
 
 import java.io.Serializable
 
