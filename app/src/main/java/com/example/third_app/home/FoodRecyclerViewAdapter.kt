@@ -70,32 +70,10 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(datalist[position])
 
-//        //recyclerview clickListener
-//        holder.itemView.setOnClickListener {
-//            ItemClickListener.OnClick(it, position)
-//        }
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it,position)
         }
     }
-
-    //FoodRecyclerViewAdapter에 clickListener Interface 만들어주기
-//    interface OnItemClickListener{
-//        fun onItemClick(v: View, data: FoodData, pos : Int)
-//    }
-//    private var listener : OnItemClickListener? = null
-//    fun setOnItemClickListener(listener : OnItemClickListener) {
-//        this.listener = listener
-//    }
-//    //클릭 인터페이스
-//    interface ItemClickListener{
-//        fun OnClick(view: View, position: Int)
-//    }
-//    //클릭 리스너
-//    private lateinit var itemClickListener: ItemClickListener
-//    fun setItemClickListener(itemClickListener: ItemClickListener){
-//        this.itemClickListener=itemClickListener
-//    }
     interface OnItemClickListener{
         fun onClick(v: View, position: Int)
     }

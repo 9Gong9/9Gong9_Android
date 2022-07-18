@@ -6,27 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".home.AddressSearchActivity"
     android:orientation="vertical"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="10dp"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="15dp">
-
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="10dp"
+            android:src="@drawable/back"
+            />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="주소 설정"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_weight="3"
+            android:layout_marginLeft="10dp"
             android:textSize="18sp"/>
+        <android.widget.Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:text="확인"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="542dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="대전광역시"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gu_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dong_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <!--
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -61,11 +104,11 @@
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
             />
-    </LinearLayout>
+    </LinearLayout>-->
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
 </LinearLayout>

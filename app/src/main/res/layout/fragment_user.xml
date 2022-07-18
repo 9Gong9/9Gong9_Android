@@ -55,9 +55,9 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/btn_red"
+                android:background="@drawable/border"
                 android:text="logout"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_gravity="center"
                 android:textSize="9dp"
                 android:textStyle="bold" />

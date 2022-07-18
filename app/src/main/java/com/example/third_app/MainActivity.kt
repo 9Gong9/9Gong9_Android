@@ -1,12 +1,16 @@
 package com.example.third_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.third_app.category.CategoryFragment
+import com.example.third_app.home.AddressSearchActivity
 import com.example.third_app.home.HomeFragment
+import com.example.third_app.login.LoginActivity
 import com.example.third_app.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kakao.sdk.common.util.Utility
@@ -50,6 +54,14 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             selectedItemId = R.id.main_home
+        }
+
+        var toolBar = findViewById<ImageView>(R.id.toolbarAddress)
+        toolBar.setOnClickListener{
+            val intent = Intent(this, AddressSearchActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
         }
 
     }

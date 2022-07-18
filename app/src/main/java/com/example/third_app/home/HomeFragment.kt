@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 
@@ -164,7 +165,6 @@ class HomeFragment : Fragment() {
                 false
             }
         }
-
         return binding.root
     }
 
