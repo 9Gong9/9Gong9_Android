@@ -1,19 +1,25 @@
 package com.example.third_app.home
 
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
+import androidx.core.content.ContextCompat.getSystemService
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.third_app.*
+import com.example.third_app.category.CategoryApplication
 import com.example.third_app.databinding.FragmentHomeBinding
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -21,11 +27,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter : FoodRecyclerViewAdapter //adapter객체 먼저 선언해주기!
-//    lateinit var viewModel : ItemViewModel by activityViewModels()
 
     var mDatas=mutableListOf<Product>()
     var itemList: ItemList?=null
-
     // sharedManager 선언
     private val sharedManager : SharedManager by lazy { SharedManager(mainActivity) }
 
@@ -59,7 +63,7 @@ class HomeFragment : Fragment() {
 
         //itemListService
         var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
-        itemListService.requestItemList("대전광역시/유성구/신성동", userid).enqueue(object :Callback<ItemList>{
+        itemListService.requestItemList("대전광역시/유성구/신성동"+ "/"+CategoryApplication.getCategoryId(), userid).enqueue(object :Callback<ItemList>{
             override fun onFailure(call: Call<ItemList>, t: Throwable) {
                 Log.e("ItemList","error : itemList 호출 실패")
                 adapter = FoodRecyclerViewAdapter()
@@ -75,6 +79,13 @@ class HomeFragment : Fragment() {
                 adapter = FoodRecyclerViewAdapter()
                 if(itemList!=null){
                     mDatas = itemList?.data?.resultItemList as MutableList<Product>
+                    var itemNameList : Array<String> = itemList?.data?.foundNameList!!.toTypedArray()
+                    // 검색어 자동 완성
+                    var autoCompleteAdapter = ArrayAdapter(mainActivity, android.R.layout.simple_dropdown_item_1line,itemNameList)
+                    binding.etHomeSearch.setAdapter(autoCompleteAdapter)
+                    Log.e("auto", itemNameList.toString())
+//                    bnding.etHomeSearch.
+
                 }
                 adapter.datalist = mDatas
                 binding.foodRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
@@ -88,26 +99,71 @@ class HomeFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                         // 전역변수 itemId
-
                         //setFragmentResult()
                         val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
                             putExtra("itemId", mDatas[position].id.toString())
                         }
                         ItemApplication.setItemId(mDatas[position].id.toString())
-//                        viewModel.itemId = mDatas[position].id.toString()
                         startActivity(intent)
-//                        val intent = Intent(context, FoodFullImage::class.java).apply{
-//                            putExtra("itemId", mDatas[position].id.toString())
-//                        }
-//                        setResult(RESULT_OK,intent)
                         Log.e("Home", mDatas[position].id.toString())
                     }
                 })
             }
-
         })
 
+        binding.etHomeSearch.setOnKeyListener{ v, keyCode, event ->
+            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER){
+//                // 키패드 내리기
+//                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//                imm.hideSoftInputFromWindow(binding.etHomeSearch.windowToken, 0)
+                var searchItemListService: SearchItemListService = retrofit.create(SearchItemListService::class.java)
+                var searchKey = binding.etHomeSearch.text
+                searchItemListService.requestItemList("대전광역시/유성구/신성동",searchKey.toString(), userid).enqueue(object :Callback<ItemList>{
+                    override fun onFailure(call: Call<ItemList>, t: Throwable) {
+                        Log.e("ItemList","error : itemList 호출 실패")
+                        adapter = FoodRecyclerViewAdapter()
+                        binding.foodRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
+                        binding.foodRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
+                    }
 
+                    override fun onResponse(call: Call<ItemList>, response: Response<ItemList>) {
+                        itemList=response.body()
+                        Log.d("ItemList", itemList.toString())
+                        Log.d("ItemList", "statusCode : "+itemList?.statusCode.toString())
+                        Log.d("ItemList", "Msg : "+itemList?.statusMsg.toString())
+                        adapter = FoodRecyclerViewAdapter()
+                        if(itemList!=null){
+                            mDatas = itemList?.data?.resultItemList as MutableList<Product>
+                        }
+                        adapter.datalist = mDatas
+                        binding.foodRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
+                        binding.foodRecyclerView.layoutManager = GridLayoutManager(mainActivity, 2)
+                        adapter.notifyDataSetChanged()
+                        adapter.setItemClickListener(object : FoodRecyclerViewAdapter.OnItemClickListener {
+                            override fun onClick(v: View, position: Int) {
+                                //클릭 시 이벤트 작성
+                                Toast.makeText(
+                                    context, "${mDatas[position].id} 클릭 이벤트.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                // 전역변수 itemId
+                                //setFragmentResult()
+                                val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
+                                    putExtra("itemId", mDatas[position].id.toString())
+                                }
+                                ItemApplication.setItemId(mDatas[position].id.toString())
+                                startActivity(intent)
+                                Log.e("Home", mDatas[position].id.toString())
+                            }
+                        })
+                    }
+                })
+                true
+            }
+            else{
+                false
+            }
+        }
 
         return binding.root
     }

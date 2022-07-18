@@ -19,7 +19,7 @@ class PreviousItemListAdapter() : RecyclerView.Adapter<PreviousItemListAdapter.M
                 val imageUrl = productData.imgUrl
                 val imageView = binding.productImg
                 Glide.with(this.itemView)
-                    .load(imageUrl) // 불러올 이미지 url
+                    .load("http:"+imageUrl) // 불러올 이미지 url
                     .into(imageView) // 이미지를 넣을 뷰
                 binding.homeFoodContext.text= productData.name
                 binding.homeFoodPercent.text=productData.rate

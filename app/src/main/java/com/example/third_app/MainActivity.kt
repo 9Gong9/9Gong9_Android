@@ -18,11 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        //viewModel 생성
-//       viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-
-//        var keyHash = Utility.getKeyHash(this)
-        //Log.e("hash", keyHash)
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bnv_main) as BottomNavigationView
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
@@ -65,7 +60,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-////mainActivity ItemViewModel 정의
-//class ItemViewModel : ViewModel(){
-//    var itemId : String ?= null
-//}

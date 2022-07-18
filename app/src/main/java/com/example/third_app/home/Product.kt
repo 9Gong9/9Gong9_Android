@@ -17,5 +17,7 @@ data class Product(
     val state: String,
     val town: String,
     val userJoinedIt: Boolean,
-    val userLikedIt: Boolean
+    val userLikedIt: Boolean,
+    val userGotIt: Boolean,
+    val rateMan : Int
 )
