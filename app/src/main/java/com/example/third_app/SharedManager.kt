@@ -13,6 +13,7 @@ class SharedManager(context:Context) {
         prefs["isActive"] = user.isActive
         prefs["name"] = user.name
         prefs["password"] = user.password
+        prefs["budget"]=user.budget
     }
     fun getCurrentUser() : LoginData {
         return LoginData(
@@ -20,6 +21,7 @@ class SharedManager(context:Context) {
             isActive = prefs["isActive", false],
             name = prefs["name", ""],
             password = prefs["password", ""],
+            budget = prefs["budget",""]
         )
     }
     fun logoutCurrentUser(user: LoginData){
@@ -27,5 +29,6 @@ class SharedManager(context:Context) {
         prefs["isActive"]=null
         prefs["name"]=null
         prefs["password"]=null
+        prefs["budget"]=null
     }
 }

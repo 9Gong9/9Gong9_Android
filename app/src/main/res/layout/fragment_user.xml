@@ -61,6 +61,18 @@
                 android:layout_gravity="center"
                 android:textSize="9dp"
                 android:textStyle="bold" />
+            <android.widget.Button
+                android:id="@+id/userOutBtn"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_red"
+                android:layout_marginLeft="5dp"
+                android:text="userOut"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textSize="9dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView

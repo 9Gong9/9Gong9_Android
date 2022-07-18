@@ -1,5 +1,6 @@
-package com.example.third_app.home
+package com.example.third_app.heart
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,20 +8,23 @@ import com.bumptech.glide.Glide
 
 import com.example.third_app.databinding.HomeListBinding
 import android.view.View
+import com.example.third_app.databinding.FragmentHeartListBinding
+import com.example.third_app.home.Product
 
-class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.MyViewHolder>() {
+
+class HeartRecyclerViewAdapter() : RecyclerView.Adapter<HeartRecyclerViewAdapter.MyViewHolder>() {
     //변수 하드코딩 바꿔야 함*******************************
     var userId="7"
 
     var datalist = mutableListOf<Product>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
 
-    inner class MyViewHolder(private val binding: HomeListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(private val binding: FragmentHeartListBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(foodData: Product){
             //binding.dogPhotoImg.=dogData.dog_img
 
             //val imageUrl = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-            val imageView = binding.homeFoodImg
+            val imageView = binding.productImg
 //            val url = "https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg"
 
             Glide.with(this.itemView)
@@ -34,7 +38,11 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
 //            binding.homeFoodPrice.text=foodData.food_price.toString()
 
             binding.homeFoodContext.text= foodData.name
+            binding.nowMan.text=foodData.nowMan.toString()
+            binding.minMan.text= foodData.minMan.toString()
             binding.homeFoodPercent.text= foodData.rate+"%"
+            binding.originPrice.text=foodData.orgPrice.toString()
+            binding.originPrice.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG)//oriPrice에 취소선 적용
             binding.homeFoodPrice.text= foodData.salePrice.toString()
 
 //            itemView.setOnClickListener {
@@ -56,10 +64,9 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
         }
     }
 
-
     //만들어진 뷰홀더 없을때 뷰홀더(레이아웃) 생성하는 함수
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding=HomeListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding=FragmentHeartListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
 
@@ -70,10 +77,32 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(datalist[position])
 
+//        //recyclerview clickListener
+//        holder.itemView.setOnClickListener {
+//            ItemClickListener.OnClick(it, position)
+//        }
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it,position)
         }
     }
+
+    //FoodRecyclerViewAdapter에 clickListener Interface 만들어주기
+//    interface OnItemClickListener{
+//        fun onItemClick(v: View, data: FoodData, pos : Int)
+//    }
+//    private var listener : OnItemClickListener? = null
+//    fun setOnItemClickListener(listener : OnItemClickListener) {
+//        this.listener = listener
+//    }
+//    //클릭 인터페이스
+//    interface ItemClickListener{
+//        fun OnClick(view: View, position: Int)
+//    }
+//    //클릭 리스너
+//    private lateinit var itemClickListener: ItemClickListener
+//    fun setItemClickListener(itemClickListener: ItemClickListener){
+//        this.itemClickListener=itemClickListener
+//    }
     interface OnItemClickListener{
         fun onClick(v: View, position: Int)
     }
