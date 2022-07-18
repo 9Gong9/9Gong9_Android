@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.third_app.*
+import com.example.third_app.category.CategoryApplication
 import com.example.third_app.databinding.FragmentUserBinding
 import com.example.third_app.home.Product
 import com.example.third_app.home.UserApplication
@@ -127,6 +128,8 @@ class UserFragment : Fragment() {
                         //userId null로 바꿔주기
                         sharedManager.logoutCurrentUser(currentUser)
                         UserApplication.deleteUserId()
+                        CategoryApplication.deleteCategoryId()
+
                         Log.d(TAG,"UserFragment!!!!!!id"+sharedManager.getCurrentUser().id)
                         Log.d(TAG,"UserFragment!!!!!!name"+sharedManager.getCurrentUser().name)
                         Log.d(TAG,"UserFragment!!!!!!pw"+sharedManager.getCurrentUser().password)

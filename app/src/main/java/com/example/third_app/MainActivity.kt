@@ -1,12 +1,16 @@
 package com.example.third_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.third_app.category.CategoryFragment
+import com.example.third_app.home.AddressSearchActivity
 import com.example.third_app.home.HomeFragment
+import com.example.third_app.login.LoginActivity
 import com.example.third_app.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kakao.sdk.common.util.Utility
@@ -18,11 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        //viewModel 생성
-//       viewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-
-//        var keyHash = Utility.getKeyHash(this)
-        //Log.e("hash", keyHash)
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bnv_main) as BottomNavigationView
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
@@ -57,6 +56,14 @@ class MainActivity : AppCompatActivity() {
             selectedItemId = R.id.main_home
         }
 
+        var toolBar = findViewById<ImageView>(R.id.toolbarAddress)
+        toolBar.setOnClickListener{
+            val intent = Intent(this, AddressSearchActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
+
     }
     //item 버튼 메뉴 Toolbar에 집어 넣기
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -65,7 +72,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-////mainActivity ItemViewModel 정의
-//class ItemViewModel : ViewModel(){
-//    var itemId : String ?= null
-//}

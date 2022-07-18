@@ -16,6 +16,7 @@ data class Product(
     val salePrice: Int,
     val state: String,
     val town: String,
+    val rateMan : Int,
     val userJoinedIt: Boolean, //참여는 했는데 사람이 아직 안 차서 구매는 못함
     val userLikedIt: Boolean, //좋아요 누른 제품
     val userGotIt:Boolean, //구매까지 해서 평점 남길 수 있는 상황

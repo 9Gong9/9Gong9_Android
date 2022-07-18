@@ -3,12 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".category.CategoryFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".category.CategoryFragment"
+    android:layout_marginTop="?attr/actionBarSize">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/btn_category_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="식품 전체보기"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="left"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/arrow_right"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                />
+        </LinearLayout>
 
+        <GridView
+            android:id="@+id/category_gridview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="10dp"
+            android:numColumns="4"/>
+    </LinearLayout>
 </FrameLayout>

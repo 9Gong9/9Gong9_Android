@@ -69,7 +69,19 @@ class SignUpActivity : AppCompatActivity() {
             })
         
         }
+        binding.btnBack.setOnClickListener{
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
 
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
     }
 }
 

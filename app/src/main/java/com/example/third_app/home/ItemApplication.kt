@@ -11,5 +11,6 @@ class ItemApplication : Application(){
         public fun setItemId(itemid : String){
             itemId = itemid
         }
+
     }
 }
