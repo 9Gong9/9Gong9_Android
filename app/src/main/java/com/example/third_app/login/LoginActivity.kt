@@ -88,10 +88,12 @@ class LoginActivity : AppCompatActivity() {
                                             id = loginData.id,
                                             isActive = loginData.isActive,
                                             name = loginData.name,
-                                            password = loginData.password
+                                            password = loginData.password,
+                                            budget =loginData.budget
                                         )
                                         sharedManager.saveCurrentUser(currentUser)
                                         UserApplication.setUserId(loginData.id)
+                                        UserApplication.setUserBudget(loginData.budget.toInt())
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                                         startActivity(intent)
                                         finish()
@@ -142,10 +144,12 @@ class LoginActivity : AppCompatActivity() {
                             id = loginData.id,
                             isActive = loginData.isActive,
                             name = loginData.name,
-                            password = loginData.password
+                            password = loginData.password,
+                            budget = loginData.budget
                         )
                         sharedManager.saveCurrentUser(currentUser)
                         UserApplication.setUserId(loginData.id)
+                        UserApplication.setUserBudget(loginData.budget.toInt())
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                         finish()

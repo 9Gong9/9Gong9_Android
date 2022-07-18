@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".HeartFragment"
     android:orientation="vertical"
+    android:layout_marginTop="?attr/actionBarSize"
     >
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
         <android.widget.Button
             android:id="@+id/heartTab"
             android:layout_width="wrap_content"
@@ -20,6 +22,8 @@
             android:background="@drawable/btn_red"
             android:textStyle="bold"
             android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
             />
         <android.widget.Button
             android:id="@+id/wantTab"
@@ -29,13 +33,26 @@
             android:background="@drawable/btn_red"
             android:textStyle="bold"
             android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
             />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/heartList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/heartRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
 </FrameLayout>

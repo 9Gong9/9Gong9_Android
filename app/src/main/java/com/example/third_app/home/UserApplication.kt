@@ -5,6 +5,7 @@ import android.app.Application
 class UserApplication : Application(){
     companion object{
         private var userId : String ?= null
+        private var userBudget:Int?=null   //여기서 userBudget가 어케 업데이트 되는 거임>?
         public fun getUserId() : String?{
             return userId
         }
@@ -13,6 +14,13 @@ class UserApplication : Application(){
         }
         public fun deleteUserId(){
             userId = null
+        }
+        //user budget 받기
+        public fun getUserBudget():Int?{
+            return userBudget
+        }
+        public fun setUserBudget(budget: Int?){
+            userBudget=budget
         }
     }
 }

@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.fl_container, categoryFragment).commit()
                     }
-//                    R.id.main_heart-> {
-//                        val heartFragment = HeartFragment()
-//                        supportFragmentManager.beginTransaction()
-//                            .replace(R.id.fl_container, heartFragment).commit()
-//                    }
+                    R.id.main_heart-> {
+                        val heartFragment = HeartFragment()
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.fl_container, heartFragment).commit()
+                    }
                     R.id.main_user-> {
                         val userFragment = UserFragment()
                         supportFragmentManager.beginTransaction()

@@ -11,6 +11,6 @@ interface ItemListService {
     @GET("/item/list/{region}") //어떤 형태로 데이터를 전송할 것인가
     fun requestItemList(
         @Path("region", encoded=true) region:String,
-        @Query("userid") userid : String
+        @Query("userId") userid : String  //i를 I로 바꿈
     ) : Call<ItemList> // 어떤 형태로 데이터를 받을 것인가 res
 }
