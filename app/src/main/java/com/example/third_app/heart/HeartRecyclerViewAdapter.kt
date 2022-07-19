@@ -13,8 +13,6 @@ import com.example.third_app.home.Product
 
 
 class HeartRecyclerViewAdapter() : RecyclerView.Adapter<HeartRecyclerViewAdapter.MyViewHolder>() {
-    //변수 하드코딩 바꿔야 함*******************************
-    var userId="7"
 
     var datalist = mutableListOf<Product>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
 
