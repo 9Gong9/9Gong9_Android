@@ -61,20 +61,73 @@
                 android:layout_gravity="center"
                 android:textSize="9dp"
                 android:textStyle="bold" />
-            <android.widget.Button
-                android:id="@+id/userOutBtn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/btn_red"
-                android:layout_marginLeft="5dp"
-                android:text="userOut"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:textSize="9dp"
-                android:textStyle="bold" />
+<!--            <android.widget.Button-->
+<!--                android:id="@+id/userOutBtn"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@drawable/btn_red"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:text="userOut"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:textSize="9dp"-->
+<!--                android:textStyle="bold" />-->
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:layout_margin="10dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="현재 잔고 : "
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/currentCoin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123445"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="원"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+                <android.widget.Button
+                    android:id="@+id/coin"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:text="충전하기"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/black"
+                    android:textSize="9dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="160dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ItemListRecyclerView"
             android:layout_width="match_parent"

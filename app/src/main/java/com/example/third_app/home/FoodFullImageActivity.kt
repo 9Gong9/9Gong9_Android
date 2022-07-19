@@ -30,6 +30,8 @@ class FoodFullImageActivity : AppCompatActivity(){
     var itemPrice=-100
     var userGotIt=false
     var starClicked=false
+    var minMan=-1
+    var nowMan=-1
     //var my_rate=-1.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +71,10 @@ class FoodFullImageActivity : AppCompatActivity(){
                         binding.foodMainTitle.text = item?.name
                         binding.foodMainPrice.text = item?.salePrice.toString()
                         binding.foodPlace.text = item?.state + " > " + item?.area +  " > " +item?.town
+
+                        binding.currentJoinUsers.text= item?.nowMan.toString()
+                        binding.minJoinUsers.text= item?.minMan.toString()
+
                         //item 판매가
                         itemPrice= item?.salePrice!!
                         Log.e("FoodUSER!!!!",item?.userGotIt.toString())
@@ -246,7 +252,10 @@ class FoodFullImageActivity : AppCompatActivity(){
 
             }
         }
-        } }
+        }
+
+    }
+
 
         //switchNowLike  -->앤 override 안 붙여주는 게 맞는 건지
         fun switchNowLike(userid:String, itemid:String){
