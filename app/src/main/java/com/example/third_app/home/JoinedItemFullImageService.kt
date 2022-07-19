@@ -12,7 +12,7 @@ interface JoinedItemFullImageService {
 //    @FormUrlEncoded //인코딩 옵션
     @PUT("/item/join/{userId}/{itemId}") //어떤 형태로 데이터를 전송할 것인가
     fun requestJoined(
-        @Path("itemId") id:String, //req
+        @Path("itemId") id: String?, //req
         @Path("userId") password:String?,
     ) : Call<JoinedItemFullImage> // 어떤 형태로 데이터를 받을 것인가 res
 

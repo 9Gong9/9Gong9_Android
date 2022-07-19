@@ -15,7 +15,7 @@ tools:context=".home.FoodFullImageActivity">
     <TextView
         android:id="@+id/foodMainTitle"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:text="아이시스 8.0 생수"
         android:textSize="25dp"
         android:textColor="@color/black"
