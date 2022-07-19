@@ -28,7 +28,17 @@
         <activity
             android:name=".PaymentActivity"
             android:exported="false" />
+         <activity
+            android:name=".user.CoinChargeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.PaymentActivity"
+            android:exported="false" />
 
+<!--        <service-->
+<!--            android:name=".FoodFullImageHeartService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".home.AddressSearchActivity"
             android:exported="false" />

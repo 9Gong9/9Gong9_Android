@@ -217,6 +217,20 @@ class UserFragment : Fragment() {
             }
 
         })
+        //현재 코인 표시해주기
+        var userId=UserApplication.getUserId()
+        val userBudget=UserApplication.getUserBudget()
+        binding.currentCoin.text= userBudget.toString()
+
+
+        //코인 충전 기능
+        binding.coin.setOnClickListener {
+            val intent = Intent(mainActivity, CoinChargeActivity::class.java).apply{
+            }
+            startActivity(intent)
+        }
+
+
         return binding.root
     }
 

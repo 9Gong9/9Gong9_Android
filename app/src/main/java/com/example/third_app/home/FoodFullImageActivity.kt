@@ -3,6 +3,7 @@ package com.example.third_app.home
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,9 +26,12 @@ class FoodFullImageActivity : AppCompatActivity(){
     var checkHeart=false
     var joinedIt=false
     var budget=UserApplication.getUserBudget()
+    var new_budget=0
     var itemPrice=-100
     var userGotIt=false
     var starClicked=false
+    var minMan=-1
+    var nowMan=-1
     //var my_rate=-1.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,6 +71,10 @@ class FoodFullImageActivity : AppCompatActivity(){
                         binding.foodMainTitle.text = item?.name
                         binding.foodMainPrice.text = item?.salePrice.toString()
                         binding.foodPlace.text = item?.state + " > " + item?.area +  " > " +item?.town
+
+                        binding.currentJoinUsers.text= item?.nowMan.toString()
+                        binding.minJoinUsers.text= item?.minMan.toString()
+
                         //item 판매가
                         itemPrice= item?.salePrice!!
                         Log.e("FoodUSER!!!!",item?.userGotIt.toString())
@@ -128,10 +136,11 @@ class FoodFullImageActivity : AppCompatActivity(){
         binding.foodGroupJoinImg.setOnClickListener {
             Log.e("클릭!!!!",joinedIt.toString())
             //참여중이었을 때 클릭함==공구 참여 취소
-            if (joinedIt){
-                budget = budget?.plus(itemPrice)
+            if (joinedIt){//공구 신청 취소
+                Log.e("111에러에러에러에러에러!!공구 신청 취소",joinedIt.toString())
+                new_budget = budget?.plus(itemPrice)!!
                 var dialog1=AlertDialog.Builder(this)
-                dialog1.setTitle("공구 신청을 취소하시겠습니까?\n 취소 시 남은 잔액: "+budget.toString()+"원")
+                dialog1.setTitle("공구 신청을 취소하시겠습니까?\n 취소 시 남은 잔액: "+new_budget.toString()+"원")
 
 
                 
@@ -139,19 +148,31 @@ class FoodFullImageActivity : AppCompatActivity(){
                     binding.foodGroupJoinImg.setImageResource(R.drawable.plus) //참여 취소!
                     joinedIt=false
                     binding.foodGroupJointxt.text="공구 참여하기"
+//                    ItemApplication.setItemId(itemId.toString())
 
-                    if (userid != null && itemId!=null) {
-                        switchJoined(userid, itemId)
-                    }
+                    val intent= Intent(this@FoodFullImageActivity, PaymentActivity::class.java)//환불!!!!
+                    intent.putExtra("userId", userid.toString())
+                    intent.putExtra("itemId", itemId.toString())
+                    intent.putExtra("itemPrice",itemPrice.toString())
+                    intent.putExtra("joinedIt", joinedIt.toString())
+                    intent.putExtra("budget",budget.toString())
+                    intent.putExtra("new_budget", new_budget.toString())
+                    startActivity(intent)
+
+//                    if (userid != null && itemId!=null) {
+//                        switchJoined(userid, itemId, joinedIt)
+//                    }
                 })
                 dialog1.create()
                         .show()
 //                Toast.makeText(this@FoodFullImageActivity,"공구 신청을 취소하시겠습니까?\n 취소 시 남은 잔액: "+budget.toString()+"원",Toast.LENGTH_SHORT).show()
             }
-            else{
+            else{//공구 신청
+                Log.e("1111에러에러에러에러에러!!!!공구 신청",joinedIt.toString())
+
                 var dialog2=AlertDialog.Builder(this)
-                budget = budget?.minus(itemPrice)
-                dialog2.setTitle("공구 신청을 하시겠습니까?\n 신청 시 남은 잔액: "+budget.toString()+"원")
+                new_budget = budget?.minus(itemPrice)!!
+                dialog2.setTitle("공구 신청을 하시겠습니까?\n 신청 시 남은 잔액: "+new_budget.toString()+"원")
 
 
 //                Toast.makeText(this@FoodFullImageActivity,"공구 신청을 하시겠습니까?\n 신청 시 남은 잔액: "+budget.toString()+"원",Toast.LENGTH_SHORT).show()
@@ -160,9 +181,25 @@ class FoodFullImageActivity : AppCompatActivity(){
                     joinedIt=true
                     binding.foodGroupJointxt.text="공구 참여 취소"
 
-                    if (userid != null && itemId!=null) {
-                        switchJoined(userid, itemId)
-                    }
+                    Log.e("들어가기 전에!!!!userId",userid.toString())
+                    Log.e("들어가기 전에!!!!itemId",itemId.toString())
+                    Log.e("들어가기 전에!!!!itemPrice",itemPrice.toString())
+                    Log.e("들어가기 전에!!!!공구 신청",joinedIt.toString())
+                    Log.e("들어가기 전에!!!!budget",budget.toString())
+                    Log.e("들어가기 전에!!!!new_budget",new_budget.toString())
+
+                    val intent= Intent(this@FoodFullImageActivity, PaymentActivity::class.java)//환불!!!!
+                    intent.putExtra("userId", userid)
+                    intent.putExtra("itemId", itemId)
+                    intent.putExtra("itemPrice",itemPrice.toString())
+                    intent.putExtra("joinedIt", joinedIt.toString())
+                    intent.putExtra("budget",budget.toString())
+                    intent.putExtra("new_budget", new_budget.toString())
+                    startActivity(intent)
+
+//                    if (userid != null && itemId!=null) {
+//                        switchJoined(userid, itemId, joinedIt)
+//                    }
                 })
                 dialog2.create()
                         .show()
@@ -215,7 +252,10 @@ class FoodFullImageActivity : AppCompatActivity(){
 
             }
         }
-        } }
+        }
+
+    }
+
 
         //switchNowLike  -->앤 override 안 붙여주는 게 맞는 건지
         fun switchNowLike(userid:String, itemid:String){
@@ -277,60 +317,60 @@ class FoodFullImageActivity : AppCompatActivity(){
             //alertDialog?.dismiss()
         }
 
-    fun switchJoined(userid:String, itemid:String){
-        var joinedItemFullImage:JoinedItemFullImage?=null
-
-        //레트로핏 객체 생성
-        var retrofit=Retrofit.Builder()
-            .baseUrl("http://192.249.18.195:80")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        //LikedFoodFullImageService 서비스 올리기
-        var joinedItemFullImageService: JoinedItemFullImageService =retrofit.create(JoinedItemFullImageService::class.java)
-
-        var dialog=AlertDialog.Builder(this) //FoodFullImageActivity로 하면 에러 나는 이유..?
-//            dialog.setTitle("관심 목록에 추가하시겠습니까?")
-//            dialog.show()
-
-        joinedItemFullImageService.requestJoined(itemid, userid!!).enqueue(object :Callback<JoinedItemFullImage>{
-            override fun onFailure(call: Call<JoinedItemFullImage>, t: Throwable) {
-                Log.e("FoodFullImageActivity","error : 공구 참여 PUT 실패")
-                dialog.setMessage("공구 참여를 실패했습니다.")
-//                    Toast.makeText(applicationContext,"error : 로그아웃 실패", Toast.LENGTH_SHORT)
-            }
-
-            override fun onResponse(
-                call: Call<JoinedItemFullImage>,
-                response: Response<JoinedItemFullImage>
-            ) {
-                joinedItemFullImage=response.body()
-                Log.e("Joined", response.body().toString())
-                if(joinedItemFullImage == null){
-                    Log.e("Joined", "res 없음")
-                }
-
-                Log.d("Joined:", "statusCode : "+joinedItemFullImage?.statusCode.toString())
-                Log.d("Joined:", "Msg : "+joinedItemFullImage?.statusMsg.toString())
-
-                //Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
-                if(joinedItemFullImage?.statusCode.toString()=="201"){ //toString 이유??
-                    var joinedProduct = joinedItemFullImage!!.data //nowJoined 써도 됐겠다
-
-
-                    if(joinedIt)Toast.makeText(this@FoodFullImageActivity,"공구 참여 등록 완료!",Toast.LENGTH_SHORT).show()
-                    else Toast.makeText(this@FoodFullImageActivity,"공구 참여 취소 완료!",Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    //Toast.makeText(this, "error : "+likedItemFullImage?.statusCode.toString(), Toast.LENGTH_SHORT)
-                    Log.e("Joined","error: "+joinedItemFullImage?.statusCode.toString())
-                    dialog.setMessage(joinedItemFullImage?.statusMsg.toString())
-                    dialog.show()
-                }
-            }
-        })
-        //alertDialog?.dismiss()
-    }
+//    fun switchJoined(userid:String, itemid:String, joinedIt:Boolean){
+//        var joinedItemFullImage:JoinedItemFullImage?=null
+//
+//        //레트로핏 객체 생성
+//        var retrofit=Retrofit.Builder()
+//            .baseUrl("http://192.249.18.195:80")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        //LikedFoodFullImageService 서비스 올리기
+//        var joinedItemFullImageService: JoinedItemFullImageService =retrofit.create(JoinedItemFullImageService::class.java)
+//
+//        var dialog=AlertDialog.Builder(this) //FoodFullImageActivity로 하면 에러 나는 이유..?
+////            dialog.setTitle("관심 목록에 추가하시겠습니까?")
+////            dialog.show()
+//
+//        joinedItemFullImageService.requestJoined(itemid, userid!!).enqueue(object :Callback<JoinedItemFullImage>{
+//            override fun onFailure(call: Call<JoinedItemFullImage>, t: Throwable) {
+//                Log.e("FoodFullImageActivity","error : 공구 참여 PUT 실패")
+//                dialog.setMessage("공구 참여를 실패했습니다.")
+////                    Toast.makeText(applicationContext,"error : 로그아웃 실패", Toast.LENGTH_SHORT)
+//            }
+//
+//            override fun onResponse(
+//                call: Call<JoinedItemFullImage>,
+//                response: Response<JoinedItemFullImage>
+//            ) {
+//                joinedItemFullImage=response.body()
+//                Log.e("Joined", response.body().toString())
+//                if(joinedItemFullImage == null){
+//                    Log.e("Joined", "res 없음")
+//                }
+//
+//                Log.d("Joined:", "statusCode : "+joinedItemFullImage?.statusCode.toString())
+//                Log.d("Joined:", "Msg : "+joinedItemFullImage?.statusMsg.toString())
+//
+//                //Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
+//                if(joinedItemFullImage?.statusCode.toString()=="201"){ //toString 이유??
+//                    var joinedProduct = joinedItemFullImage!!.data //nowJoined 써도 됐겠다
+//
+//
+//                    if(joinedIt)Toast.makeText(this@FoodFullImageActivity,"공구 참여 등록 완료!",Toast.LENGTH_SHORT).show()
+//                    else Toast.makeText(this@FoodFullImageActivity,"공구 참여 취소 완료!",Toast.LENGTH_SHORT).show()
+//                }
+//                else{
+//                    //Toast.makeText(this, "error : "+likedItemFullImage?.statusCode.toString(), Toast.LENGTH_SHORT)
+//                    Log.e("Joined","error: "+joinedItemFullImage?.statusCode.toString())
+//                    dialog.setMessage(joinedItemFullImage?.statusMsg.toString())
+//                    dialog.show()
+//                }
+//            }
+//        })
+//        //alertDialog?.dismiss()
+//    }
 
     fun giveRate(userid:String, itemid:String, my_rate:Float){
         var giveStarFullImage:GiveStarFullImage?=null
