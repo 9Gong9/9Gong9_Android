@@ -155,10 +155,6 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     }
                     else{
-//                        dialog.setTitle("Error "+login?.statusCode.toString())
-//                        dialog.setMessage(login?.statusMsg.toString())
-//                        dialog.show()
-//                        alertDialog?.dismiss()
                           Toast.makeText(applicationContext, login?.statusMsg.toString(), Toast.LENGTH_SHORT)
                     }
                 }

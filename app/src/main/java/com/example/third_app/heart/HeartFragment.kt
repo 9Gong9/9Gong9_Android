@@ -70,7 +70,6 @@ class HeartFragment : Fragment() {//찜목록과 원하는 목록 구분 필요*
                     binding.heartRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
                     binding.heartRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
                 }
-
                 override fun onResponse(call: Call<HeartList>, response: Response<HeartList>) {
                     heartList=response.body()
                     Log.d("HeartList", heartList.toString())
@@ -95,15 +94,9 @@ class HeartFragment : Fragment() {//찜목록과 원하는 목록 구분 필요*
 
                             //setFragmentResult()
                             val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
-//                            putExtra("itemId", mDatas[position].id.toString())
                             }
                             ItemApplication.setItemId(mDatas[position].id.toString())
-//                        viewModel.itemId = mDatas[position].id.toString()
                             startActivity(intent)
-//                        val intent = Intent(context, FoodFullImage::class.java).apply{
-//                            putExtra("itemId", mDatas[position].id.toString())
-//                        }
-//                        setResult(RESULT_OK,intent)
                             Log.e("Heart: ", mDatas[position].id.toString())
                         }
                     })
@@ -151,18 +144,11 @@ class HeartFragment : Fragment() {//찜목록과 원하는 목록 구분 필요*
                                 Toast.LENGTH_SHORT
                             ).show()
                             // 전역변수 itemId
-
                             //setFragmentResult()
                             val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
-//                            putExtra("itemId", mDatas[position].id.toString())
                             }
                             ItemApplication.setItemId(mDatas[position].id.toString())
-//                        viewModel.itemId = mDatas[position].id.toString()
                             startActivity(intent)
-//                        val intent = Intent(context, FoodFullImage::class.java).apply{
-//                            putExtra("itemId", mDatas[position].id.toString())
-//                        }
-//                        setResult(RESULT_OK,intent)
                             Log.e("Want: ", mDatas[position].id.toString())
                         }
                     })

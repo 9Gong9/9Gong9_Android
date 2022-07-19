@@ -63,9 +63,9 @@ class PreviousItemListAdapter() : RecyclerView.Adapter<PreviousItemListAdapter.M
     interface OnItemClickListener{
         fun onClick(v: View, position: Int)
     }
-    fun setItemClickListener(onItemClickListener: FoodRecyclerViewAdapter.OnItemClickListener){
+    fun setItemClickListener(onItemClickListener: PreviousItemListAdapter.OnItemClickListener){
         this.itemClickListener=onItemClickListener
     }
-    private lateinit var itemClickListener: FoodRecyclerViewAdapter.OnItemClickListener
+    private lateinit var itemClickListener: PreviousItemListAdapter.OnItemClickListener
 
 }
