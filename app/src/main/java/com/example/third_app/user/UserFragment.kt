@@ -16,12 +16,14 @@ import com.bumptech.glide.Glide
 import com.example.third_app.*
 import com.example.third_app.category.CategoryApplication
 import com.example.third_app.databinding.FragmentUserBinding
-import com.example.third_app.home.Product
-import com.example.third_app.home.UserApplication
+import com.example.third_app.home.*
 import com.example.third_app.login.Login
 import com.example.third_app.login.LoginActivity
 import com.example.third_app.login.LogoutService
+import com.kakao.sdk.auth.AuthApiClient
+import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.talk.TalkApiClient
+import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -138,6 +140,28 @@ class UserFragment : Fragment() {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                         dialog.setMessage("로그아웃 완료!")
+
+                        if(AuthApiClient.instance.hasToken()){
+                            UserApiClient.instance.accessTokenInfo { _, error ->
+                                if (error != null) {
+                                    if (error is KakaoSdkError && error.isInvalidTokenError() == true) { //로그인 필요
+                                    }
+                                    else {//기타 에러
+                                    }
+                                }
+                                else {
+                                    // 로그아웃
+                                    UserApiClient.instance.logout { error ->
+                                        if (error != null) {
+                                            Log.e(TAG, "로그아웃 실패. SDK에서 토큰 삭제됨", error)
+                                        }
+                                        else {
+                                            Log.i(TAG, "로그아웃 성공. SDK에서 토큰 삭제됨")
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     else{
                         Toast.makeText(mainActivity, "error : "+logout?.statusCode.toString(), Toast.LENGTH_SHORT)
@@ -171,6 +195,24 @@ class UserFragment : Fragment() {
                 adapter.datalist = mDatas
                 binding.ItemListRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
                 binding.ItemListRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
+
+                adapter.setItemClickListener(object : PreviousItemListAdapter.OnItemClickListener {
+                    override fun onClick(v: View, position: Int) {
+                        //클릭 시 이벤트 작성
+                        Toast.makeText(
+                            context, "${mDatas[position].id} 클릭 이벤트.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        // 전역변수 itemId
+                        //setFragmentResult()
+                        val intent = Intent(mainActivity, FoodFullImageActivity::class.java).apply{
+                            putExtra("itemId", mDatas[position].id.toString())
+                        }
+                        ItemApplication.setItemId(mDatas[position].id.toString())
+                        startActivity(intent)
+                        Log.e("Home", mDatas[position].id.toString())
+                    }
+                })
                 adapter.notifyDataSetChanged()
             }
 

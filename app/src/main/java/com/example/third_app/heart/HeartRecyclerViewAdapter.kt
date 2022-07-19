@@ -13,8 +13,7 @@ import com.example.third_app.home.Product
 
 
 class HeartRecyclerViewAdapter() : RecyclerView.Adapter<HeartRecyclerViewAdapter.MyViewHolder>() {
-    //변수 하드코딩 바꿔야 함*******************************
-    var userId="7"
+
 
     var datalist = mutableListOf<Product>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
 
@@ -30,12 +29,6 @@ class HeartRecyclerViewAdapter() : RecyclerView.Adapter<HeartRecyclerViewAdapter
             Glide.with(this.itemView)
                 .load("http:"+foodData.imgUrl) // 불러올 이미지 url
                 .into(imageView) // 이미지를 넣을 뷰
-
-//                .circleCrop() // 동그랗게 자르기
-//            //binding.homeFoodImg.setImageURI(foodData.food_img.toString())
-//            binding.homeFoodContext.text= foodData.food_name.toString()
-//            binding.homeFoodPercent.text=foodData.food_percent.toString()
-//            binding.homeFoodPrice.text=foodData.food_price.toString()
 
             binding.homeFoodContext.text= foodData.name
             binding.nowMan.text=foodData.nowMan.toString()

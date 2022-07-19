@@ -81,7 +81,7 @@ class HeartFragment : Fragment() {//찜목록과 원하는 목록 구분 필요*
                 }
                 adapter.datalist = mDatas
                 binding.heartRecyclerView.adapter = adapter //리사이클러뷰에 어댑터 연결
-                binding.heartRecyclerView.layoutManager = GridLayoutManager(mainActivity, 2)
+                binding.heartRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
                 adapter.notifyDataSetChanged()
                 adapter.setItemClickListener(object : HeartRecyclerViewAdapter.OnItemClickListener {
                     override fun onClick(v: View, position: Int) {

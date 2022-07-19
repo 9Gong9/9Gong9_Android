@@ -4,55 +4,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HeartFragment"
-    android:orientation="vertical"
     android:layout_marginTop="?attr/actionBarSize"
     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp">
-        <android.widget.Button
-            android:id="@+id/heartTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="찜 목록"
-            android:background="@drawable/btn_red"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            />
-        <android.widget.Button
-            android:id="@+id/wantTab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="원하는 목록"
-            android:background="@drawable/btn_red"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            />
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/border"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/heartRecyclerView"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="10dp">
+            <android.widget.Button
+                android:id="@+id/heartTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="찜 목록"
+                android:background="@drawable/border"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                />
+            <android.widget.Button
+                android:id="@+id/wantTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원하는 목록"
+                android:background="@drawable/border"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
-            >
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/heartRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
     </LinearLayout>
+
 
 </FrameLayout>
