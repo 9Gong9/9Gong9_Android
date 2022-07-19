@@ -14,11 +14,10 @@ import com.example.third_app.home.Product
 
 class HeartRecyclerViewAdapter() : RecyclerView.Adapter<HeartRecyclerViewAdapter.MyViewHolder>() {
 
-
     var datalist = mutableListOf<Product>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
 
     inner class MyViewHolder(private val binding: FragmentHeartListBinding): RecyclerView.ViewHolder(binding.root) {
-
+https://github.com/yena777/MadCamp_3rd/pull/15/conflict?name=app%252Fsrc%252Fmain%252Fres%252Flayout%252Ffragment_heart.xml&ancestor_oid=7919ade2a5f43a9ca85c182bb46c747b24593479&base_oid=b3f010632d8c26b7083f4170a866c4feca36a2ac&head_oid=602723d548f68e892734718be29476313cd47428
         fun bind(foodData: Product){
             //binding.dogPhotoImg.=dogData.dog_img
 

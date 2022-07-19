@@ -16,10 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Third_app"
         tools:targetApi="31">
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+
         <service
             android:name=".FoodFullImageHeartService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".home.AddressSearchActivity"
