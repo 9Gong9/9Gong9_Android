@@ -169,29 +169,29 @@ tools:context=".home.FoodFullImageActivity">
             android:textStyle="bold"
             android:textColor="#555555"></TextView>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="택배사: "
-            android:textSize="13dp"
-            android:textStyle="bold"
-            android:textColor="#555555"></TextView>
-        <TextView
-            android:id="@+id/delivery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="CJ대한통운"
-            android:textSize="13dp"
-            android:textStyle="bold"
-            android:textColor="#555555"></TextView>
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="5dp">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:text="택배사: "-->
+<!--            android:textSize="13dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#555555"></TextView>-->
+<!--        <TextView-->
+<!--            android:id="@+id/delivery"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:text="CJ대한통운"-->
+<!--            android:textSize="13dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#555555"></TextView>-->
+<!--    </LinearLayout>-->
 
     <TextView
         android:id="@+id/foodContext"
@@ -199,18 +199,82 @@ tools:context=".home.FoodFullImageActivity">
         android:layout_height="20.5dp"
         android:layout_marginTop="5dp"
 
-        android:text="  열린 팀구매 조회하기"
+        android:text="  공구 진행 현황"
         android:background="@drawable/textview_box"
         android:textStyle="bold"
         android:textColor="@color/black"
 
        ></TextView>
-    <ListView
-        android:id="@+id/currentTeamList"
+<!--    <ListView-->
+<!--        android:id="@+id/currentTeamList"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--    </ListView>-->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="현재 참여 명수: "
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:id="@+id/currentJoinUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="2"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="명"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="공구 마감 인원: "
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:id="@+id/minJoinUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="2"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="명"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="#555555"></TextView>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
