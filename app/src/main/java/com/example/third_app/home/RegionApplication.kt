@@ -8,6 +8,7 @@ class RegionApplication {
         private var city : String = "대전광역시"
         private var gu : String = "유성구"
         private var dong : String = "신성동"
+        private var isInitialized : Boolean = false
 
         val region_list = arrayOf("봉명동", "구암동", "원신흥동", "죽동", "궁동", "어은동", "신성동", "도룡동", "관평동", "구룡동")
 
@@ -34,6 +35,12 @@ class RegionApplication {
         }
         fun getDongList(): MutableList<String> {
             return dong_list
+        }
+        fun regionInitialized(){
+            isInitialized = true
+        }
+        fun isInitialized() : Boolean{
+            return isInitialized
         }
     }
 }

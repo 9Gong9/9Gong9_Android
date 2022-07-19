@@ -112,6 +112,7 @@ class CategoryFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
                 CategoryApplication.setCategoryId(path[a_position])
+                CategoryApplication.setCategoryRealId(txt[a_position])
                 val homeFragment = HomeFragment()
                 mainActivity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fl_container, homeFragment).commit()
@@ -120,6 +121,7 @@ class CategoryFragment : Fragment() {
 
         binding.btnCategoryAll.setOnClickListener{
             CategoryApplication.deleteCategoryId()
+            CategoryApplication.deleteCategoryRealId()
             val homeFragment = HomeFragment()
             mainActivity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_container, homeFragment).commit()

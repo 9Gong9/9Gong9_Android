@@ -80,7 +80,7 @@ class FoodFullImageActivity : AppCompatActivity(){
                         Log.e("FoodUSER!!!!",item?.userGotIt.toString())
                         userGotIt= (item?.userGotIt == true) //userGotIt true일때
 
-                        binding.foodMainDeliverTime.text = item?.dueDate
+                        //binding.foodMainDeliverTime.text = item?.dueDate
                         //rate 받아오고 또 평점 남기기 후에는 다시 줘야함->여기는 현재 평점(내 평점 반영 전)받아오는 코드
                         binding.foodMainRate.rating = item?.rate!!.toFloat()
                         Glide.with(this@FoodFullImageActivity)

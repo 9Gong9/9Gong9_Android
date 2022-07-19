@@ -42,8 +42,16 @@ class LoginActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        //로그인 서비스 올리기
+        // 로그인 서비스 올리기
         var loginService: LoginService = retrofit.create(LoginService::class.java)
+
+        // 로그인 여부 확인
+        if(UserApplication.getUserId() != null){
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
 
         // 카카오계정으로 로그인
         binding.btnKakaoLogin.setOnClickListener{
@@ -116,6 +124,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+
 
 
         // 로그인

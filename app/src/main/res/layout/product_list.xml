@@ -152,7 +152,7 @@ android:padding="10dp"
         <android.widget.Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:text="배송조회"
+            android:text="평점 쓰기"
             android:layout_weight="1"
             android:background="@drawable/border"
             android:layout_marginHorizontal="5dp"/>

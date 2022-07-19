@@ -17,6 +17,18 @@
         android:theme="@style/Theme.Third_app"
         tools:targetApi="31">
         <activity
+            android:name=".SplashActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+         <activity
             android:name=".user.CoinChargeActivity"
             android:exported="false" />
         <activity
@@ -27,7 +39,6 @@
 <!--            android:name=".FoodFullImageHeartService"-->
 <!--            android:enabled="true"-->
 <!--            android:exported="true" />-->
-
         <activity
             android:name=".home.AddressSearchActivity"
             android:exported="false" />
@@ -57,11 +68,6 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"

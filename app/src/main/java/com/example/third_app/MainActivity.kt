@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.third_app.category.CategoryFragment
@@ -68,6 +69,14 @@ class MainActivity : AppCompatActivity() {
 
         var address = findViewById<TextView>(R.id.address)
         address.text = RegionApplication.getRegion()
+
+        if(!RegionApplication.isInitialized()){
+            Toast.makeText(this@MainActivity, "주소를 입력해주세요", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AddressSearchActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+            finish()
+        }
 
     }
     //item 버튼 메뉴 Toolbar에 집어 넣기

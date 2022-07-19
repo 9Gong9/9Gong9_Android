@@ -9,50 +9,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_marginHorizontal="10dp">
             <android.widget.Button
                 android:id="@+id/heartTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="찜 목록"
-                android:background="@drawable/border"
+                android:text="관심 목록"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:background="@color/black"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="5dp"
                 />
             <android.widget.Button
                 android:id="@+id/wantTab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="원하는 목록"
-                android:background="@drawable/border"
+                android:text="공구 참여 중"
                 android:textStyle="bold"
                 android:textColor="@color/black"
+                android:background="@color/white"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="5dp"
                 />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
             >
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/heartRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -62,6 +62,8 @@ class HomeFragment : Fragment() {
 
         var userid = sharedManager.getCurrentUser().id
 
+        binding.tvHomeCategory.text = CategoryApplication.getCategoryRealId()
+
         //itemListService
         var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
         itemListService.requestItemList(RegionApplication.getRegion()+ "/"+CategoryApplication.getCategoryId(), userid).enqueue(object :Callback<ItemList>{
