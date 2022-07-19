@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.third_app.databinding.HomeListBinding
 import com.example.third_app.databinding.RegionListBinding
 
-class GuRecyclerAdapter() : RecyclerView.Adapter<GuRecyclerAdapter.MyViewHolder>() {
+class DongRecyclerAdapter() : RecyclerView.Adapter<DongRecyclerAdapter.MyViewHolder>() {
     var datalist = mutableListOf<String>()//리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가
     var selectPos : Int = 0
     inner class MyViewHolder(private val binding: RegionListBinding): RecyclerView.ViewHolder(binding.root) {
@@ -30,7 +30,7 @@ class GuRecyclerAdapter() : RecyclerView.Adapter<GuRecyclerAdapter.MyViewHolder>
     }
 
     //만들어진 뷰홀더 없을때 뷰홀더(레이아웃) 생성하는 함수
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuRecyclerAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DongRecyclerAdapter.MyViewHolder {
         val binding= RegionListBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
@@ -39,7 +39,7 @@ class GuRecyclerAdapter() : RecyclerView.Adapter<GuRecyclerAdapter.MyViewHolder>
 
     //recyclerview가 viewholder를 가져와 데이터 연결할때 호출
     //적절한 데이터를 가져와서 그 데이터를 사용하여 뷰홀더의 레이아웃 채움
-    override fun onBindViewHolder(holder: GuRecyclerAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DongRecyclerAdapter.MyViewHolder, position: Int) {
         holder.bind(datalist[position])
         if(selectPos == position){
             holder.itemView.setBackgroundColor(Color.parseColor("#fafafa"))
@@ -52,10 +52,10 @@ class GuRecyclerAdapter() : RecyclerView.Adapter<GuRecyclerAdapter.MyViewHolder>
             selectPos = position
             notifyItemChanged(beforePos)
             notifyItemChanged(selectPos)
-            Log.e("gu : beforePos", beforePos.toString())
-            Log.e("gu : selectPos", selectPos.toString())
-
- //           RegionApplication.setDongList(selectPos)
+            Log.e("dong : beforePos", beforePos.toString())
+            Log.e("dong: selectPos", selectPos.toString())
+            RegionApplication.setDong(selectPos)
+            //RegionApplication.setDong
 //            itemClickListener.onClick(it,position)
 //            row_index = position
             notifyDataSetChanged()

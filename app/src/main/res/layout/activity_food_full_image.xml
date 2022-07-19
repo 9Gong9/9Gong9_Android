@@ -23,7 +23,7 @@ tools:context=".home.FoodFullImageActivity">
         android:layout_marginTop="30dp"
         ></TextView>
     <TextView
-        android:id="@+id/foodPlace1"
+        android:id="@+id/foodPlace"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:text="대전 > 유성구 > 어은로"

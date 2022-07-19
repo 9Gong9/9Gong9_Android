@@ -68,6 +68,7 @@ class FoodFullImageActivity : AppCompatActivity(){
                         item = data?.data
                         binding.foodMainTitle.text = item?.name
                         binding.foodMainPrice.text = item?.salePrice.toString()
+                        binding.foodPlace.text = item?.state + " > " + item?.area +  " > " +item?.town
                         //item 판매가
                         itemPrice= item?.salePrice!!
                         Log.e("FoodUSER!!!!",item?.userGotIt.toString())

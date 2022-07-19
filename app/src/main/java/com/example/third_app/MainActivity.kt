@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.third_app.category.CategoryFragment
 import com.example.third_app.home.AddressSearchActivity
 import com.example.third_app.home.HomeFragment
+import com.example.third_app.home.RegionApplication
 import com.example.third_app.login.LoginActivity
 import com.example.third_app.user.UserFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -63,6 +65,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        var address = findViewById<TextView>(R.id.address)
+        address.text = RegionApplication.getRegion()
 
     }
     //item 버튼 메뉴 Toolbar에 집어 넣기

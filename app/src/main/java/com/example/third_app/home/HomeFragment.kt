@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
 
         //itemListService
         var itemListService: ItemListService = retrofit.create(ItemListService::class.java)
-        itemListService.requestItemList("대전광역시/유성구/신성동"+ "/"+CategoryApplication.getCategoryId(), userid).enqueue(object :Callback<ItemList>{
+        itemListService.requestItemList(RegionApplication.getRegion()+ "/"+CategoryApplication.getCategoryId(), userid).enqueue(object :Callback<ItemList>{
             override fun onFailure(call: Call<ItemList>, t: Throwable) {
                 Log.e("ItemList","error : itemList 호출 실패")
                 adapter = FoodRecyclerViewAdapter()
@@ -119,7 +119,7 @@ class HomeFragment : Fragment() {
 //                imm.hideSoftInputFromWindow(binding.etHomeSearch.windowToken, 0)
                 var searchItemListService: SearchItemListService = retrofit.create(SearchItemListService::class.java)
                 var searchKey = binding.etHomeSearch.text
-                searchItemListService.requestItemList("대전광역시/유성구/신성동",searchKey.toString(), userid).enqueue(object :Callback<ItemList>{
+                searchItemListService.requestItemList(RegionApplication.getRegion(),searchKey.toString(), userid).enqueue(object :Callback<ItemList>{
                     override fun onFailure(call: Call<ItemList>, t: Throwable) {
                         Log.e("ItemList","error : itemList 호출 실패")
                         adapter = FoodRecyclerViewAdapter()

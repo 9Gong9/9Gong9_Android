@@ -32,6 +32,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="18sp"/>
         <android.widget.Button
+            android:id="@+id/btn_submit"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -47,19 +48,26 @@
         android:layout_marginTop="10dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/tv_region"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:text="대전광역시"
+            android:layout_marginHorizontal="10dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginLeft="30dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gu_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_weight="1"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dong_recycler_view"
