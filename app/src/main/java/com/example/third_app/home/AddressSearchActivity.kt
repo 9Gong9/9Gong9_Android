@@ -75,6 +75,14 @@ class AddressSearchActivity : AppCompatActivity() {
 
         binding.btnSubmit.setOnClickListener{
             Log.e("address", RegionApplication.getRegion())
+            RegionApplication.regionInitialized()
+            val intent = Intent(this@AddressSearchActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnBack.setOnClickListener{
+            RegionApplication.isInitialized()
+            Log.e("address", RegionApplication.getRegion())
             val intent = Intent(this@AddressSearchActivity, MainActivity::class.java)
             startActivity(intent)
         }

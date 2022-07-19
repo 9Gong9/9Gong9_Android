@@ -34,7 +34,8 @@ class FoodRecyclerViewAdapter() : RecyclerView.Adapter<FoodRecyclerViewAdapter.M
 //            binding.homeFoodPrice.text=foodData.food_price.toString()
 
             binding.homeFoodContext.text= foodData.name
-            binding.homeFoodPercent.text= foodData.rate+"%"
+            binding.homeFoodPercent.text= ((foodData.salePrice/foodData.orgPrice)*100).toString()+"%"
+            binding.homeFoodrate.text = foodData.rate
             binding.homeFoodPrice.text= foodData.salePrice.toString()
 
 //            itemView.setOnClickListener {
