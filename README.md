@@ -99,8 +99,6 @@
 
 ### Install
 
-DB 초기화 시, 
+- DB 초기화 시, ```GET “http://domain/item/itemCrawl”``` 요청을 1회 보내야 합니다.
 
-GET “http://domain/item/itemCrawl” 요청을 1회 보내야 합니다.
-
-위 요청은 서버로 하여금 webscraping을 통해 emart 온라인 쇼핑몰 사이트에서 예시 상품 데이터를 fetch해 본 서비스에 적합한 형태로 가공해, DB에 저장합니다.
+- 위 요청은 서버로 하여금 webscraping을 통해 emart 온라인 쇼핑몰 사이트에서 예시 상품 데이터를 fetch해 본 서비스에 적합한 형태로 가공해, DB에 저장합니다.
