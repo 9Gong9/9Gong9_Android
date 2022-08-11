@@ -12,10 +12,10 @@
 - 이메일과 비밀번호를 통해 회원가입 및 로그인할 수 있습니다.
 - 카카오 소셜 로그인을 지원합니다.
 - 본인이 지정한 동네의 커뮤니티원들과 함께 공동구매를 진행할 수 있습니다.
-<center>
+
 ![1](https://user-images.githubusercontent.com/76472415/184139044-0334dc95-cd45-4bbf-b1ee-b5c7226b2ba0.PNG)
 ![2](https://user-images.githubusercontent.com/76472415/184139082-b378968f-6640-49fd-86ba-099603f093d3.PNG)
-<center/>
+
     
 ---
 
@@ -39,9 +39,9 @@
 ### C. 어플리케이션 소개
 
 ### SIGNUP & LOGIN
-<center>
+
 ![3](https://user-images.githubusercontent.com/76472415/184139124-cbc4609e-f66a-48c5-b039-8aa822b52315.PNG)
-</center>
+
     
 **Main features**
 
@@ -56,10 +56,9 @@
 ---
 
 ### 상품 리스트
-<center>
+
 ![4](https://user-images.githubusercontent.com/76472415/184139183-eeb65784-5125-4c7a-89cc-2724f827451b.PNG)
-</center>
-    
+
 **Main features**
 
 - 지역별 상품 필터링
@@ -90,9 +89,8 @@
 ---
 
 ### 유저 정보
-<center>
+
 ![6](https://user-images.githubusercontent.com/76472415/184139259-64778529-42e6-4441-91fe-7f8ede65fc78.PNG)
-</center>
     
 **Main features**
 
