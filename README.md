@@ -72,9 +72,8 @@
 ---
 
 ### 상품 상세보기
-<center>
+
 ![5](https://user-images.githubusercontent.com/76472415/184139236-e9abc6c6-e55c-47b1-ae61-a638bf6888ef.PNG)
-</center>
     
 **Main features**
 
