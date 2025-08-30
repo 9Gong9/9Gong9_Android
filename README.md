@@ -9,7 +9,7 @@
 ## A. Team Members
 - **Yena Park** – Sookmyung Women’s University, Software Convergence  
 - **Jongeun Park** – KAIST, School of Electrical Engineering  
-- **Jina Kim** – KAIST, School of Computer Science  
+- **Jina Kim** – KAIST, School of Freshman  
 
 ---
 
