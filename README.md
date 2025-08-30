@@ -1,4 +1,4 @@
-# GroupGroceries
+# GroupGroceries App
 
 > Flow Week 3 – Team 3  
 >  
