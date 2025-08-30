@@ -1,6 +1,6 @@
 # GroupGroceries App
 
-> Flow Week 3 – Team 3  
+> Team 3  
 >  
 > An Android-based group-buying application for groceries, designed for students and single residents.  
 
